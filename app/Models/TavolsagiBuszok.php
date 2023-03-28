@@ -9,6 +9,8 @@ class TavolsagiBuszok extends Model
 {
     use HasFactory;
 
+    protected $table = 'TAVOLSAGI_BUSZOK';
+
     protected $fillable = [
         'allomas',
         'megnevezes'

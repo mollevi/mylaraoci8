@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Jegy extends Model
 {
     use HasFactory;
+
+    protected $table = 'JEGY';
+
     protected $fillable = [
         'ar',
         'tipus'

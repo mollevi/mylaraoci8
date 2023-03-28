@@ -9,6 +9,8 @@ class Megallo extends Model
 {
     use HasFactory;
 
+    protected $table = 'MEGALLO';
+
     protected $fillable = [
         'nev',
         'kilometer',

@@ -9,6 +9,8 @@ class Modositas extends Model
 {
     use HasFactory;
 
+    protected $table = 'MODOSIT';
+
     protected $fillable = [
         'jegy_id',
         'admin_id',
