@@ -22,11 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/admin/{id}', [AdminController::class, 'show']);
-Route::get('/felhasznalo/{id}', [FelhasznaloController::class, 'show']);
-Route::get('/helyibusz/{id}', [HelyibuszokController::class, 'show']);
-Route::get('/jegy/{id}', [JegyController::class, 'show']);
-Route::get('/megallo/{id}', [MegalloController::class, 'show']);
-Route::get('/tavolsagibuszok/{id}', [TavolsagibuszokController::class, 'show']);
-Route::get('/vonatok/{id}', [VonatokController::class, 'show']);
+})->name('home');;
+Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin');
+Route::get('/felhasznalo/{id}', [FelhasznaloController::class, 'show'])->name('felhasznalo');;
+Route::get('/helyibusz/{id}', [HelyibuszokController::class, 'show'])->name('helyibusz');
+Route::get('/jegy/{id}', [JegyController::class, 'show'])->name('jegy');
+Route::get('/megallo/{id}', [MegalloController::class, 'show'])->name('megallo');
+Route::get('/tavolsagibuszok/{id}', [TavolsagibuszokController::class, 'show'])->name('tavolsagibuszok');
+Route::get('/vonatok/{id}', [VonatokController::class, 'show'])->name('vonatok');
