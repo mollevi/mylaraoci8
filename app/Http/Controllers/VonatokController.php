@@ -14,8 +14,8 @@ class VonatokController extends Controller
      */
     public function show(int $id): \Illuminate\View\View
     {
-        return view('Vonatok.profile', [
-            'Vonatok' => Vonatok::findOrFail($id)
+        return view('vonat.data', [
+            'vonat' => Vonatok::findOrFail($id)
         ]);
     }
 }

@@ -7,15 +7,15 @@ use App\Models\Megallo;
 class MegalloController extends Controller
 {
     /**
-     * Show the profile for a given user.
+     * Fetch the data for a given megallo.
      *
      * @param int $id
      * @return \Illuminate\View\View
      */
     public function show(int $id): \Illuminate\View\View
     {
-        return view('Megallo.profile', [
-            'Megallo' => Megallo::findOrFail($id)
+        return view('megallo.data', [
+            'megallo' => Megallo::findOrFail($id)
         ]);
     }
 }

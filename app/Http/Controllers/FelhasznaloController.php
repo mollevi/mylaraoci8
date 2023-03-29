@@ -7,7 +7,7 @@ use App\Models\Felhasznalo;
 class FelhasznaloController extends Controller
 {
     /**
-     * Show the profile for a given user.
+     * Show the profile for a given felhasznalo.
      *
      * @param int $id
      * @return \Illuminate\View\View

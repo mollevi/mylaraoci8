@@ -15,8 +15,8 @@ class JegyController extends Controller
      */
     public function show(int $id): \Illuminate\View\View
     {
-        return view('Jegy.profile', [
-            'Jegy' => Jegy::findOrFail($id)
+        return view('jegy.data', [
+            'jegy' => Jegy::findOrFail($id)
         ]);
     }
 }
