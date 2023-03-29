@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('modosit', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer("jegy_id");
-            $table->integer("admin_id");
+            $table->integer("jegy_id")->constrained("jegy");
+            $table->integer("admin_id")->constrained("admin");
             $table->string("szoveg");
             $table->date("erkezesi_ido");
             $table->rememberToken();

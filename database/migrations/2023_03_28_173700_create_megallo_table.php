@@ -18,9 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string("nev");
             $table->integer("kilometer");
-            $table->integer("vonat_id");
-            $table->integer("tavolsagi_buszok_id");
-            $table->integer("helyi_buszok_id");
+            $table->integer("vonat_id")->constrained("vonat");
+            $table->integer("tavolsagi_buszok_id")->constrained("tavolsagi_buszok");
+            $table->integer("helyi_buszok_id")->constrained("helyi_buszok");
             $table->date("indulasi_ido");
             $table->date("erkezesi_ido");
             $table->rememberToken();

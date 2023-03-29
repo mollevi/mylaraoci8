@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string("tipus");
             $table->integer("ar");
+            $table->integer("felhasznalo_id")->constrained("felhasznalo");
             $table->rememberToken();
         });
     }
