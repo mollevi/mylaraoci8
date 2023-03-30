@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('vonatok', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("allomas");
+            $table->string("leiras");
             $table->string("megnevezes");;
             $table->rememberToken();
         });
