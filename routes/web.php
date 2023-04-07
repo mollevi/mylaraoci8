@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');;
+})->name('home');
 Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin');
 Route::get('/felhasznalo/{id}', [FelhasznaloController::class, 'show'])->name('felhasznalo');;
 Route::get('/helyibusz/{id}', [HelyibuszokController::class, 'show'])->name('helyibusz');
