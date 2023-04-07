@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>ABAR</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -99,6 +99,13 @@
                             </div>
                         </div>
                     </div>
+                    <a href="{{ route("admin", 1) }}"><button type="button" >show me the first admin</button></a><br>
+                    <a href="{{ route("felhasznalo", 1) }}"><button type="button" >show me the first felhasznalo</button></a><br>
+                    <a href="{{ route("helyibusz", 1) }}"><button type="button" >show me the first helyibusz</button></a><br>
+                    <a href="{{ route("jegy", 1) }}"><button type="button" >show me the first jegy</button></a><br>
+                    <a href="{{ route("megallo", 1) }}"><button type="button" >show me the first megallo</button></a><br>
+                    <a href="{{ route("tavolsagibuszok", 1) }}"><button type="button" >show me the first tavolsagibuszok</button></a><br>
+                    <a href="{{ route("vonatok", 1) }}"><button type="button" >show me the first vonatok</button></a><br>
                 </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">

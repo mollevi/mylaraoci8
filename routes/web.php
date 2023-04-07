@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FelhasznaloController;
+use App\Http\Controllers\HelyibuszokController;
+use App\Http\Controllers\JegyController;
+use App\Http\Controllers\MegalloController;
+use App\Http\Controllers\TavolsagibuszokController;
+use App\Http\Controllers\VonatokController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/egy felhasznalo akinek az id-ja {id}', [FelhasznaloController::class, 'show']);
+})->name('home');;
+Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin');
+Route::get('/felhasznalo/{id}', [FelhasznaloController::class, 'show'])->name('felhasznalo');;
+Route::get('/helyibusz/{id}', [HelyibuszokController::class, 'show'])->name('helyibusz');
+Route::get('/jegy/{id}', [JegyController::class, 'show'])->name('jegy');
+Route::get('/megallo/{id}', [MegalloController::class, 'show'])->name('megallo');
+Route::get('/tavolsagibuszok/{id}', [TavolsagibuszokController::class, 'show'])->name('tavolsagibuszok');
+Route::get('/vonatok/{id}', [VonatokController::class, 'show'])->name('vonatok');
