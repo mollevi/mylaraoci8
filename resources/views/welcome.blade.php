@@ -24,7 +24,10 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <a href="{{ route("menetrend") }}">Menetrendek</a>
+    <a href="{{ route("login") }}">Regisztráció/Bejelentkezés</a>
+
+        <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -49,21 +52,23 @@
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <a href="{{ route("admin", 1) }}"><button type="button" >Show me the first admin</button></a><br>
+                    <a </a><br>
                     <a href="{{ route("felhasznalo", 1) }}"><button type="button" >Show me the first felhasznalo</button></a><br>
                     <a href="{{ route("helyibusz", 1) }}"><button type="button" >Show me the first helyibusz</button></a><br>
                     <a href="{{ route("jegy", 1) }}"><button type="button" >Show me the first jegy</button></a><br>
                     <a href="{{ route("megallo", 1) }}"><button type="button" >Show me the first megallo</button></a><br>
                     <a href="{{ route("tavolsagibuszok", 1) }}"><button type="button" >Show me the first tavolsagibuszok</button></a><br>
                     <a href="{{ route("vonatok", 1) }}"><button type="button" >Show me the first vonatok</button></a><br>
+
                 </div>
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        <small>A gyengébbek kedvéért: Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</div></small>
+                        <small>A gyengébbek kedvéért: Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</small></div>
                     </div>
                 </div>
             </div>
         </div>
+        -->
     </body>
 </html>

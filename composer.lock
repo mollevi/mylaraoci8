@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28a01a2270f5f8763ab90d42a14b7367",
+    "content-hash": "ec822dc31ee517bd5d0fcf96de7e95c1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5932,16 +5932,16 @@
         },
         {
             "name": "yajra/laravel-oci8",
-            "version": "v9.5.0",
+            "version": "v9.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-oci8.git",
-                "reference": "d23b34dafaef1d61b33bece6cca7538f88ee770f"
+                "reference": "6a6a7d3e69cd3d8a5ebb766b98de874cdfb699ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/d23b34dafaef1d61b33bece6cca7538f88ee770f",
-                "reference": "d23b34dafaef1d61b33bece6cca7538f88ee770f",
+                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/6a6a7d3e69cd3d8a5ebb766b98de874cdfb699ec",
+                "reference": "6a6a7d3e69cd3d8a5ebb766b98de874cdfb699ec",
                 "shasum": ""
             },
             "require": {
@@ -5955,7 +5955,6 @@
                 "yajra/laravel-pdo-via-oci8": "^3.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^3.3",
                 "mockery/mockery": "^1.4.4",
                 "orchestra/testbench": "^7.0",
                 "phpunit/phpunit": "^9.5.8"
@@ -5999,7 +5998,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-oci8/issues",
-                "source": "https://github.com/yajra/laravel-oci8/tree/v9.5.0"
+                "source": "https://github.com/yajra/laravel-oci8/tree/v9.0.0"
             },
             "funding": [
                 {
@@ -6007,15 +6006,11 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://github.com/yajra",
-                    "type": "github"
-                },
-                {
                     "url": "https://www.patreon.com/yajra",
                     "type": "patreon"
                 }
             ],
-            "time": "2023-03-01T03:24:23+00:00"
+            "time": "2022-02-09T05:24:31+00:00"
         },
         {
             "name": "yajra/laravel-pdo-via-oci8",

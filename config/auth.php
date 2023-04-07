@@ -62,7 +62,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'oracle',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Felhasznalo::class,
         ],
 
         // 'users' => [
