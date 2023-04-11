@@ -12,6 +12,7 @@ use App\Http\Controllers\MenetrendController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TavolsagibuszokController;
 use App\Http\Controllers\UserHomeController;
+use App\Http\Controllers\VisszaController;
 use App\Http\Controllers\VonatokController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,10 @@ Route::get('/profil', [ProfilController::class, 'showProfilForm'])->name('profil
 Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
 Route::get('/jegyek', [JegyekController::class, 'showJegyekForm'])->name('jegyek');
 
-Route::post('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->middleware('auth')->name('changePassword');
+Route::get('/jelszogenerator/{str}', function ($str) {return view('jelszogenerator',['valamijelszo'=>$str]);});
+
+Route::post('/admin-login', [AdminController::class, 'login'])->name('admin-login');
+
+Route::post('/change-password', [ChangePasswordController::class, 'ChangePassword'])->middleware('auth')->name('changePassword');
 
 
