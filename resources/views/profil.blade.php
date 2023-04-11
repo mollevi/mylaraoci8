@@ -5,26 +5,36 @@
         <h1>Profil</h1>
 
         <div>
-            <label for="email">Email</label>
-            <label for="email">Ez az emailem</label> <!-- TODO! -->
+            <label for="email">Email:</label>
+            <label for="email">{{$felhasznalo->email}}</label> <!-- TODO! -->
         </div>
 
         <div>
-            <label for="name">Név</label>
-            <label for="email">Ez a nevem</label> <!-- TODO! -->
+            <label for="name">Név:</label>
+            <label for="name">{{$felhasznalo->nev}}</label> <!-- TODO! -->
         </div>
 
         <div>
-            <label for="password">Password</label>
-            <label for="email">Ez a jelszavam</label>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-            <a href="{{ route("changePassword") }}">Jelszo módosítás</a>
+            <label for="password">Jelszómódosítás:</label>
+            <a href="{{ route("changePassword") }}">Itt</a>
+        </div>
+
+        <div>
+            <label for="text">Lakcím</label>
+            <label for="text">{{$felhasznalo->iranyitoszam.' '.$felhasznalo->utca.' '.$felhasznalo->hazszam}}</label> <!-- TODO! -->
+        </div>
+
+        <div>
+            <label for="date">Születési dátum</label>
+            <label for="date">{{$felhasznalo->szuldatum}}</label> <!-- TODO! -->
         </div>
 
         <div>
             <label for="jegy">Jegyek megtekintése:</label>
             <a href="{{ route("jegyek") }}">Jegyeim</a>
         </div>
+
+        <button type="button" onclick="history.back();">Vissza</button>
     </form>
 </div>
 

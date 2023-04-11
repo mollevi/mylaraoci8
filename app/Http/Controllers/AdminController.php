@@ -3,19 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends \Illuminate\Routing\Controller
 {
-    /**
-     * Show the profile for a given admin.
-     *
-     * @param int $id
-     * @return \Illuminate\View\View
-     */
-    public function show(int $id): \Illuminate\View\View
+    public function login(Request $request)
     {
-        return view('admin.profile', [
-            'admin' => Admin::findOrFail($id)
+        // Validaáljuk a bejelentkezési adatokat
+        $validatedData = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
+
+        // Próbáljuk beléptetni a felhasználót
+        if (Auth::guard('admin')->attempt($validatedData)) {
+            // Ha sikerült, átirányítjuk a felhasználót a megfelelő oldalra
+            return redirect()->intended("userHome");
+        } else {
+            // Ha nem sikerült, visszairányítjuk a felhasználót a bejelentkező oldalra
+            return back()->withInput()->withErrors(['email' => 'Hibás e-mail cím vagy jelszó']);
+        }
     }
+
+
 }

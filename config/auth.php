@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
     ],
 
     /*
@@ -63,6 +68,10 @@ return [
         'users' => [
             'driver' => 'oracle',
             'model' => App\Models\Felhasznalo::class,
+        ],
+        'admins' => [
+            'driver' => 'oracle',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [

@@ -1,28 +1,26 @@
 <div style="display: inline-block">
-    <form method="POST" action="{{ route('change-password') }}">
+    <form method="POST" action="{{ route('changePassword') }}">
         @csrf
         <h1>Jeslszó módosítás</h1>
         <div>
-            <label for="password">Eredeti jelszó</label>
-            <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <label for="current_password">Current Password:</label>
+            <input type="password" name="current_password">
         </div>
 
         <div>
-            <label for="password">Új jelszó</label>
-            <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <label for="new_password">New Password:</label>
+            <input type="password" name="new_password">
         </div>
 
         <div>
-            <label for="password">Új jelszó megismétlése</label>
-            <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <label for="new_password_confirmation">Confirm New Password:</label>
+            <input type="password" name="new_password_confirmation">
         </div>
 
         <div>
-            <button >Vissza</button>
+            <button type="button" onclick="history.back();">Vissza</button>
             <button type="submit">Mentés</button>
         </div>
+
     </form>
 </div>
