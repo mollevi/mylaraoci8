@@ -2,6 +2,8 @@
 <form method="POST" action="{{ route('login') }}">
     @csrf
 
+    <h1>Bejelentkezés és Regisztráció</h1>
+
     <div>
         <label for="email">Email</label>
         <input type="email" name="email" required>

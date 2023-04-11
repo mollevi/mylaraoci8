@@ -47,7 +47,9 @@ Route::get('/menetrend', [MenetrendController::class, 'showMenetrendForm'])->nam
 Route::get('/userHome', [UserHomeController::class, 'showUserHomeForm'])->name('userHome');
 Route::get('/profil', [ProfilController::class, 'showProfilForm'])->name('profil');
 
-Route::get('/changePassword', [ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
+Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
 Route::get('/jegyek', [JegyekController::class, 'showJegyekForm'])->name('jegyek');
+
+Route::post('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->middleware('auth')->name('changePassword');
 
 

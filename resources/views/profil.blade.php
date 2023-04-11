@@ -2,6 +2,8 @@
     <form method="POST" action="{{ route('profil') }}">
         @csrf
 
+        <h1>Profil</h1>
+
         <div>
             <label for="email">Email</label>
             <label for="email">Ez az emailem</label> <!-- TODO! -->
