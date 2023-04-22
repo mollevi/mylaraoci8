@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TavolsagiBuszok;
+use Illuminate\View\View;
 
 class TavolsagibuszokController extends Controller
 {
@@ -10,9 +11,9 @@ class TavolsagibuszokController extends Controller
      * Fetch the data for a given tavolsagi busz.
      *
      * @param int $id
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function show(int $id): \Illuminate\View\View
+    public function show(int $id): View
     {
         return view('tavolsagibusz.data', [
             'tavolsagibusz' => TavolsagiBuszok::findOrFail($id)

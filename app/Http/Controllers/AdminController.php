@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -10,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 class AdminController extends \Illuminate\Routing\Controller
 {
 
-    public function login(Request $request)
+    public function login(Request $request): RedirectResponse
     {
         // Validaáljuk a bejelentkezési adatokat
         $validatedData = $request->validate([
@@ -28,7 +31,7 @@ class AdminController extends \Illuminate\Routing\Controller
         }
     }
 
-    public function showAdminHomeForm()
+    public function showAdminHomeForm(): Factory|View|Application
     {
         return view('adminHome');
     }

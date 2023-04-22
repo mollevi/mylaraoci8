@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vonatok;
+use Illuminate\View\View;
 
 class VonatokController extends Controller
 {
@@ -10,9 +11,9 @@ class VonatokController extends Controller
      * Fetch the data for a given vonat.
      *
      * @param int $id
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function show(int $id): \Illuminate\View\View
+    public function show(int $id): View
     {
         return view('vonat.data', [
             'vonat' => Vonatok::findOrFail($id)

@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Felhasznalo;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class FelhasznaloController extends Controller
 {
@@ -13,19 +19,19 @@ class FelhasznaloController extends Controller
      * Show the profile for a given felhasznalo.
      *
      * @param int $id
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function show(int $id): \Illuminate\View\View
+    public function show(int $id): View
     {
         return view('felhasznalo.profile', [
             'felhasznalo' => Felhasznalo::findOrFail($id)
         ]);
     }
-    public function showLoginForm()
+    public function showLoginForm(): Factory|\Illuminate\Contracts\View\View|Application
     {
         return view('login');
     }
-    public function login(Request $request)
+    public function login(Request $request): RedirectResponse
     {
         // Validaáljuk a bejelentkezési adatokat
         $validatedData = $request->validate([
@@ -43,12 +49,33 @@ class FelhasznaloController extends Controller
         }
     }
 
-    public function showUserHomeForm()
+    public function showUserHomeForm(): Factory|\Illuminate\Contracts\View\View|Application
     {
         return view('userHome');
     }
 
-    public function showProfilForm() {
+    public function ChangePassword (Request $request) {
+        $felhasznalok = Auth::user();
+
+        $current_password = $request->input('current_password');
+        $new_password = $request->input('new_password');
+        $new_password_confirmation = $request->input('new_password_confirmation');
+
+        if (!Hash::check($current_password, $felhasznalok->getAuthPassword())) {
+            return redirect()->back()->with('error', 'The current password is incorrect.');
+        }
+
+        if ($new_password !== $new_password_confirmation) {
+            return redirect()->back()->with('error', 'The new password and its confirmation do not match.');
+        }
+
+        DB::table('felhasznalo')->where('id', $felhasznalok->getAuthIdentifier())->update(['jelszohash' => Hash::make($new_password)]);
+
+        return redirect()->back()->with('success', 'The password has been changed.');
+    }
+
+    public function showProfilForm(): \Illuminate\Contracts\View\View|Factory|RedirectResponse|Application
+    {
         // get the currently authenticated user
         $user = Auth::user();
 
@@ -61,7 +88,7 @@ class FelhasznaloController extends Controller
 
     }
 
-    public function logout()
+    public function logout(): RedirectResponse
     {
         auth()->logout();
         return Redirect::route('home');
