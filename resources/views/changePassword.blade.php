@@ -1,7 +1,7 @@
 <div style="display: inline-block">
     <form method="POST" action="{{ route('changePassword') }}">
         @csrf
-        <h1>Jeslszó módosítás</h1>
+        <h1>Jelszó módosítás</h1>
         <div>
             <label for="current_password">Current Password:</label>
             <input type="password" name="current_password">
