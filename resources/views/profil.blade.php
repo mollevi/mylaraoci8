@@ -6,12 +6,12 @@
 
         <div>
             <label for="email">Email:</label>
-            <label for="email">{{$felhasznalo->email}}</label> <!-- TODO! -->
+            <label for="email">{{$felhasznalo->email}}</label>
         </div>
 
         <div>
             <label for="name">Név:</label>
-            <label for="name">{{$felhasznalo->nev}}</label> <!-- TODO! -->
+            <label for="name">{{$felhasznalo->nev}}</label>
         </div>
 
         <div>
@@ -21,12 +21,12 @@
 
         <div>
             <label for="text">Lakcím</label>
-            <label for="text">{{$felhasznalo->iranyitoszam.' '.$felhasznalo->utca.' '.$felhasznalo->hazszam}}</label> <!-- TODO! -->
+            <label for="text">{{$felhasznalo->iranyitoszam.' '.$felhasznalo->utca.' '.$felhasznalo->hazszam}}</label>
         </div>
 
         <div>
             <label for="date">Születési dátum</label>
-            <label for="date">{{$felhasznalo->szuldatum}}</label> <!-- TODO! -->
+            <label for="date">{{$felhasznalo->szuldatum}}</label>
         </div>
 
         <div>

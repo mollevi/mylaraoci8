@@ -7,7 +7,7 @@
         <a href="{{ route("menetrend") }}">Menetrendek</a>
         <a href="{{ route("profil") }}">Profil</a>
 
-        <button>Kijelentkezés</button>
     </form>
+    <a href={{route("felhasznalo-logout")}}><button>Kijelentkezés</button></a>
 </div>
 

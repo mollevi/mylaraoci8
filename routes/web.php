@@ -6,14 +6,11 @@ use App\Http\Controllers\FelhasznaloController;
 use App\Http\Controllers\HelyibuszokController;
 use App\Http\Controllers\JegyController;
 use App\Http\Controllers\JegyekController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MegalloController;
 use App\Http\Controllers\MenetrendController;
-use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TavolsagibuszokController;
-use App\Http\Controllers\UserHomeController;
-use App\Http\Controllers\VisszaController;
 use App\Http\Controllers\VonatokController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,14 +36,19 @@ Route::get('/tavolsagibuszok/{id}', [TavolsagibuszokController::class, 'show'])-
 Route::get('/vonatok/{id}', [VonatokController::class, 'show'])->name('vonatok');
 
 Route::post('/register', 'RegistrationController@register')->name('register');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [FelhasznaloController::class, 'login'])->name('login');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [FelhasznaloController::class, 'showLoginForm'])->name('login');
+Route::get('/admin-logout', [AdminController::class, 'logout'])->name('admin-logout');
+Route::get('/felhasznalo-logout', [FelhasznaloController::class, 'logout'])->name('felhasznalo-logout');
 
 Route::get('/menetrend', [MenetrendController::class, 'showMenetrendForm'])->name('menetrend');
 
-Route::get('/userHome', [UserHomeController::class, 'showUserHomeForm'])->name('userHome');
-Route::get('/profil', [ProfilController::class, 'showProfilForm'])->name('profil');
+Route::get('/userHome', [FelhasznaloController::class, 'showUserHomeForm'])->name('userHome');
+Route::get('/adminHome', [AdminController::class, 'showAdminHomeForm'])->name('adminHome');
+
+Route::get('/profil', [FelhasznaloController::class, 'showProfilForm'])->name('profil');
+Route::get('/adminProfil', [AdminController::class, 'showAdminProfilForm'])->name('adminProfil');
 
 Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
 Route::get('/jegyek', [JegyekController::class, 'showJegyekForm'])->name('jegyek');
