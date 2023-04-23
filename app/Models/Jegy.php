@@ -14,6 +14,7 @@ class Jegy extends Model
     protected $fillable = [
         'ar',
         'tipus',
+        'tavolsag',
         'felhasznalo_id'
     ];
 

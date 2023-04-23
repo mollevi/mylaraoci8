@@ -13,9 +13,9 @@ class HelyiBuszok extends Model
 
     protected $fillable = [
         'leiras',
-        'magnevezes',
-        'infulasideje',
-        'indulashelye',
+        'megnevezes',
+        'indulasi_ido',
+        'telepules'
     ];
 
     protected $hidden = [

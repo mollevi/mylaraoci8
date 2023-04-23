@@ -13,9 +13,9 @@ class Vonatok extends Model
 
     protected $fillable = [
         'leiras',
-        'magnevezes',
-        'infulasideje',
-        'indulashelye',
+        'megnevezes',
+        'indulasi_ido',
+        'indulasi_telepules',
     ];
 
     protected $hidden = [

@@ -1,24 +1,24 @@
 <div style="display: inline-block">
-<form method="POST" action="{{ route('login') }}">
-    @csrf
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-    <h1>Bejelentkezés és Regisztráció</h1>
+        <h1>Bejelentkezés és Regisztráció</h1>
 
-    <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" required>
-    </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+        </div>
 
-    <div>
-        <label for="password">Jelszo</label>
-        <input type="password" name="password" required>
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-    </div>
+        <div>
+            <label for="password">Jelszo</label>
+            <input type="password" name="password" required>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+        </div>
 
-    <div>
-        <button type="submit">LogIn</button>
-    </div>
-</form>
+        <div>
+            <button type="submit">LogIn</button>
+        </div>
+    </form>
 </div>
 
 <div style="display: inline-block">
@@ -38,7 +38,7 @@
         <div>
             <label for="password">Password</label>
             <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
         </div>
 
         <div>
@@ -68,7 +68,7 @@
         <div>
             <label for="password">Jelszó</label>
             <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
         </div>
 
         <div>

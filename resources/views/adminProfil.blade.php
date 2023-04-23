@@ -16,7 +16,7 @@
 
         <div>
             <label for="password">Jelszómódosítás:</label>
-            <a href="{{ route("changePassword") }}">Itt</a>
+            <a href="{{ route("adminChangePassword") }}">Itt</a>
         </div>
 
         <div>

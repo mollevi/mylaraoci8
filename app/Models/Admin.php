@@ -20,7 +20,7 @@ class Admin extends Model implements Authenticatable
     ];
 
     protected $hidden = [
-        'jelszo',
+        'jelszohash',
         'remember_token',
     ];
 
@@ -40,7 +40,7 @@ class Admin extends Model implements Authenticatable
 
     public function getAuthPassword()
     {
-        return $this->jelszo;
+        return $this->jelszohash;
     }
 
     public function getRememberTokenName()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Megallo;
+use Illuminate\View\View;
 
 class MegalloController extends Controller
 {
@@ -10,9 +11,9 @@ class MegalloController extends Controller
      * Fetch the data for a given megallo.
      *
      * @param int $id
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function show(int $id): \Illuminate\View\View
+    public function show(int $id): View
     {
         return view('megallo.data', [
             'megallo' => Megallo::findOrFail($id)
