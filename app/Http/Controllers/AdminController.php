@@ -24,7 +24,7 @@ class AdminController extends \Illuminate\Routing\Controller
         // Próbáljuk beléptetni az admint
         if (Auth::guard('admin')->attempt($validatedData)) {
             // Ha sikerült, átirányítjuk az admint a megfelelő oldalra
-            return redirect()->intended("admin/home");
+            return Redirect::route('admin/home');
         } else {
             // Ha nem sikerült, visszairányítjuk a felhasználót a bejelentkező oldalra
             return back()->withInput()->withErrors(['email' => 'Hibás e-mail cím vagy jelszó']);

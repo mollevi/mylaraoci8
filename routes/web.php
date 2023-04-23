@@ -33,7 +33,7 @@ Route::get('/user/logout', [FelhasznaloController::class, 'logout'])->middleware
 /**
  * and these for admin session's lifecycle
  */
-Route::post('/admin/login', [AdminController::class, 'processLogin'])->middleware('auth:admin')->name('admin/login');
+Route::post('/admin/login', [AdminController::class, 'processLogin'])->name('admin/login');
 Route::get('/admin/home', [AdminController::class, 'showHome'])->middleware('auth:admin')->name('admin/home');
 Route::get('/admin/changes', [AdminController::class, 'showChanges'])->middleware('auth:admin')->name('admin/changes');
 Route::get('/admin/profile', [AdminController::class, 'showProfile'])->middleware('auth:admin')->name('admin/profile');
