@@ -37,10 +37,18 @@
             @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->helyibusz_indulasi_ido))
                 <th>Helyi busz indulási idő</th>
             @endif
-            <th>Célállomás</th>
-            <th>Érkezési idő</th>
-            <th>Megálló száma</th>
-            <th>Km a megállóig</th>
+            @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->telepules))
+                <th>Célállomás</th>
+            @endif
+            @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->ido))
+                <th>Érkezési idő</th>
+            @endif
+            @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->sorszam))
+                <th>Megálló száma</th>
+            @endif
+            @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->kilometer))
+                <th>Km a megállóig</th>
+            @endif
         </tr>
         </thead>
         <tbody>
@@ -62,10 +70,18 @@
                     @if(isset($jarat->helyibusz_indulasi_ido))
                         <td>{{ $jarat->helyibusz_indulasi_ido }}</td>
                     @endif
-                    <td>{{ $jarat->telepules }}</td>
-                    <td>{{ $jarat->ido }}</td>
-                    <td>{{ $jarat->sorszam }}</td>
-                    <td>{{ $jarat->kilometer }}</td>
+                    @if(isset($jarat->telepules))
+                        <td>{{ $jarat->telepules }}</td>
+                    @endif
+                    @if(isset($jarat->ido))
+                        <td>{{ $jarat->ido }}</td>
+                    @endif
+                    @if(isset($jarat->sorszam))
+                        <td>{{ $jarat->sorszam }}</td>
+                    @endif
+                    @if(isset($jarat->kilometer))
+                        <td>{{ $jarat->kilometer }}</td>
+                    @endif
                 </tr>
             @endforeach
         @endif
