@@ -15,18 +15,6 @@ use Illuminate\View\View;
 
 class FelhasznaloController extends Controller
 {
-    /**
-     * Show the profile for a given felhasznalo.
-     *
-     * @param int $id
-     * @return View
-     */
-    public function show(int $id): View
-    {
-        return view('felhasznalo.profile', [
-            'felhasznalo' => Felhasznalo::findOrFail($id)
-        ]);
-    }
     public function showLoginForm(): Factory|\Illuminate\Contracts\View\View|Application
     {
         return view('login');
