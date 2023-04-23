@@ -16,9 +16,7 @@ class Megallo extends Model
         'kilometer',
         'vonat_id',
         'helyi_busz_id',
-        'tavolsagi_busz_id',
-        'indulasi_idopont',
-        'erkezesi_idopont'
+        'tavolsagi_busz_id'
     ];
 
     protected $hidden = [

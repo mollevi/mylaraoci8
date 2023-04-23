@@ -12,8 +12,12 @@ class TavolsagiBuszok extends Model
     protected $table = 'TAVOLSAGI_BUSZOK';
 
     protected $fillable = [
-        'allomas',
-        'megnevezes'
+        'leiras',
+        'megnevezes',
+        'indulasi_ido',
+        'indulasi_telepules',
+        'erkezesi_ido',
+        'erkezesi_telepules'
     ];
 
     protected $hidden = [

@@ -15,15 +15,13 @@ class Felhasznalo extends Model implements Authenticatable
     protected $fillable = [
         'nev',
         'email',
-        'szul_datum',
-        'jelszo',
-        'iranyitoszam',
-        'cim',
-        'hazszam'
+        'szuldatum',
+        'jelszohash',
+        'lakcim',
     ];
 
     protected $hidden = [
-        'jelszo',
+        'jelszohash',
         'remember_token',
     ];
 
@@ -43,7 +41,7 @@ class Felhasznalo extends Model implements Authenticatable
 
     public function getAuthPassword()
     {
-        return $this->jelszo;
+        return $this->jelszohash;
     }
 
     public function getRememberTokenName()

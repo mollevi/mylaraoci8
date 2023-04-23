@@ -12,8 +12,11 @@ class HelyiBuszok extends Model
     protected $table = 'HELYI_BUSZOK';
 
     protected $fillable = [
-        'allomas',
+        'leiras',
         'magnevezes',
+        'indulasi_ido',
+        'erkezesi_ido',
+        'telepules'
     ];
 
     protected $hidden = [

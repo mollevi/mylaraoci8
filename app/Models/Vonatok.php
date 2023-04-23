@@ -12,8 +12,12 @@ class Vonatok extends Model
     protected $table = 'VONATOK';
 
     protected $fillable = [
-        'allomas',
-        'megnevezes'
+        'leiras',
+        'megnevezes',
+        'indulasi_ido',
+        'indulasi_telepules',
+        'erkezesi_ido',
+        'erkezesi_telepules'
     ];
 
     protected $hidden = [

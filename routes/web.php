@@ -1,16 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\FelhasznaloController;
 use App\Http\Controllers\HelyibuszokController;
 use App\Http\Controllers\JegyController;
-use App\Http\Controllers\JegyekController;
 use App\Http\Controllers\MegalloController;
 use App\Http\Controllers\MenetrendController;
 use App\Http\Controllers\TavolsagibuszokController;
 use App\Http\Controllers\VonatokController;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,13 +47,14 @@ Route::get('/adminHome', [AdminController::class, 'showAdminHomeForm'])->name('a
 Route::get('/profil', [FelhasznaloController::class, 'showProfilForm'])->name('profil');
 Route::get('/adminProfil', [AdminController::class, 'showAdminProfilForm'])->name('adminProfil');
 
-Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm'])->name('changePassword');
-Route::get('/jegyek', [JegyekController::class, 'showJegyekForm'])->name('jegyek');
+Route::get('/change-password', function () {return view('changePassword');})->name('change-password');
+Route::get('/admin/change-password', [AdminController::class, 'showChangePasswordForm'])->name('admin-change-password');
+Route::get('/jegyek', [FelhasznaloController::class, 'showJegyekForm'])->name('jegyek');
 
 Route::get('/jelszogenerator/{str}', function ($str) {return view('jelszogenerator',['valamijelszo'=>$str]);});
 
 Route::post('/admin-login', [AdminController::class, 'login'])->name('admin-login');
 
-Route::post('/change-password', [ChangePasswordController::class, 'ChangePassword'])->middleware('auth')->name('changePassword');
+Route::post('/change-password', [FelhasznaloController::class, 'ChangePassword'])->middleware('auth')->name('changePassword');
 
 

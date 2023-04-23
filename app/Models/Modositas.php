@@ -12,7 +12,6 @@ class Modositas extends Model
     protected $table = 'MODOSIT';
 
     protected $fillable = [
-        'jegy_id',
         'admin_id',
         'szoveg',
         'datum'

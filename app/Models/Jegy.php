@@ -13,7 +13,9 @@ class Jegy extends Model
 
     protected $fillable = [
         'ar',
-        'tipus'
+        'tipus',
+        'tavolsag',
+        'felhasznalo_id'
     ];
 
     protected $hidden = [

@@ -16,11 +16,11 @@ class Admin extends Model implements Authenticatable
         'nev',
         'email',
         'szul_datum',
-        'jelszo'
+        'jelszohash'
     ];
 
     protected $hidden = [
-        'jelszo',
+        'jelszohash',
         'remember_token',
     ];
 
@@ -40,18 +40,21 @@ class Admin extends Model implements Authenticatable
 
     public function getAuthPassword()
     {
-        return $this->jelszo;
+        return $this->jelszohash;
     }
 
     public function getRememberTokenName()
     {
         return 'token';
     }
-    public function getRememberToken(){
+
+    public function getRememberToken()
+    {
         return $this->token;
     }
 
-    public function setRememberToken($value){
+    public function setRememberToken($value)
+    {
 
     }
 
