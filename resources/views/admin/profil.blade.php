@@ -1,5 +1,5 @@
 <div style="display: inline-block">
-    <form method="POST" action="{{ route('adminProfil') }}">
+    <form method="POST" action="{{ route('admin/profile') }}">
         @csrf
 
         <h1>AdminProfil</h1>
@@ -16,7 +16,7 @@
 
         <div>
             <label for="password">Jelszómódosítás:</label>
-            <a href="{{ route("adminChangePassword") }}">Itt</a>
+            <a href="{{ route("admin/change-password") }}">Itt</a>
         </div>
 
         <div>

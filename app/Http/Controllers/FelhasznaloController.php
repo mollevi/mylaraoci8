@@ -15,35 +15,41 @@ use Illuminate\View\View;
 
 class FelhasznaloController extends Controller
 {
-    public function showLoginForm(): Factory|\Illuminate\Contracts\View\View|Application
+
+    public function processLogin(Request $request): RedirectResponse
     {
-        return view('login');
-    }
-    public function login(Request $request): RedirectResponse
-    {
-        // Validaáljuk a bejelentkezési adatokat
+        // Validáljuk a bejelentkezési adatokat
         $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Próbáljuk beléptetni a felhasználót
         if (Auth::attempt($validatedData)) {
-            // Ha sikerült, átirányítjuk a felhasználót a megfelelő oldalra
-            return redirect()->intended("userHome");
+            // Ha sikerült beléptetni a felhasználót, átirányítjuk a felhasználót a megfelelő oldalra
+            return Redirect::route('home');
         } else {
-            // Ha nem sikerült, visszairányítjuk a felhasználót a bejelentkező oldalra
+            // Ha nem, visszairányítjuk a felhasználót a bejelentkező oldalra
             return back()->withInput()->withErrors(['email' => 'Hibás e-mail cím vagy jelszó']);
         }
     }
-
-    public function showUserHomeForm(): Factory|\Illuminate\Contracts\View\View|Application
+    public function showPasswordChanger():Factory|\Illuminate\Contracts\View\View|Application
     {
-        return view('userHome');
+        return view("user.password-changer");
     }
 
-    public function ChangePassword (Request $request) {
-        $felhasznalok = Auth::user();
+
+    public function showHome(): Factory|\Illuminate\Contracts\View\View|Application
+    {
+        return view('user.home');
+    }
+
+    public function showProfile(): \Illuminate\Contracts\View\View|Factory|RedirectResponse|Application
+    {
+        return view('user.profil', ['felhasznalo' => Auth::user()]);
+    }
+
+    public function processPasswordChange (Request $request) {
+        $felhasznalo = Auth::user();
 
         $current_password = $request->input('current_password');
         $new_password = $request->input('new_password');
@@ -62,23 +68,9 @@ class FelhasznaloController extends Controller
         return redirect()->back()->with('status', 'The password has been changed.');
     }
 
-    public function showProfilForm(): \Illuminate\Contracts\View\View|Factory|RedirectResponse|Application
-    {
-        // get the currently authenticated user
-        $user = Auth::user();
-
-        if ($user==null){
-            return Redirect::route('home');
-        }
-
-        // display the user's name
-        return view('profil', ['felhasznalo' => $user]);
-
-    }
-
     public function logout(): RedirectResponse
     {
         auth()->logout();
-        return Redirect::route('home');
+        return Redirect::route('welcome');
     }
 }

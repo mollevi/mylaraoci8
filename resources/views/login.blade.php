@@ -1,78 +1,42 @@
-<div style="display: inline-block">
-    <form method="POST" action="{{ route('login') }}">
+<table border="1">
+    <tr>
+    <th><h1>Bejelentkezés</h1></th>
+    <th><h1>Regisztráció</h1></th>
+    <th><h1>Admin Bejelentkezés</h1></th>
+    </tr>
+    <tr><td><form method="POST" action="{{ route('login') }}">
         @csrf
+        <label for="email">E-mail
+            <input type="email" name="email" required></label><br>
+        <label for="password">Jelszó
+            <input type="password" name="password" required></label><br>
+        <button type="submit">LogIn</button>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+    </form></td>
 
-        <h1>Bejelentkezés és Regisztráció</h1>
-
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
-        </div>
-
-        <div>
-            <label for="password">Jelszo</label>
-            <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-        </div>
-
-        <div>
-            <button type="submit">LogIn</button>
-        </div>
-    </form>
-</div>
-
-<div style="display: inline-block">
-    <form method="POST" action="{{ route('register') }}">
+    <td><form method="POST" action="{{ route('register') }}">
         @csrf
+        <label for="name">Name
+            <input type="text" name="name" required></label><br>
+        <label for="email">Email
+            <input type="email" name="email" required></label><br>
+        <label for="password">Password
+            <input type="password" name="password" required></label><br>
+        <label for="password_confirmation">Confirm Password
+            <input type="password" name="password_confirmation" required></label><br>
+        <button type="submit">Register</button>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+    </form></td>
 
-        <div>
-            <label for="name">Name</label>
-            <input type="text" name="name" required>
-        </div>
-
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
-        </div>
-
-        <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-        </div>
-
-        <div>
-            <label for="password_confirmation">Confirm Password</label>
-            <input type="password" name="password_confirmation" required>
-        </div>
-
-        <div>
-            <button type="submit">Register</button>
-        </div>
-
-        <button type="button" onclick="history.back();">Vissza</button>
-    </form>
-</div>
-
-<div style="display: inline-block">
-    <form method="POST" action="{{ route('admin-login') }}">
+    <td><form method="POST" action="{{ route('admin/login') }}">
         @csrf
+        <label for="email">Email
+            <input type="email" name="email" required></label><br>
+        <label for="password">Jelszó
+            <input type="password" name="password" required></label>
+        <button type="submit">LogIn</button>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+    </form></td></tr>
+</table>
 
-        <h1>Admin Bejelentkezés</h1>
-
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
-        </div>
-
-        <div>
-            <label for="password">Jelszó</label>
-            <input type="password" name="password" required>
-            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-        </div>
-
-        <div>
-            <button type="submit">LogIn</button>
-        </div>
-    </form>
-</div>
+<button type="button" onclick="history.back();">Vissza</button>

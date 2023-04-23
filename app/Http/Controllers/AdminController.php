@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 class AdminController extends \Illuminate\Routing\Controller
 {
 
-    public function login(Request $request): RedirectResponse
+    public function processLogin(Request $request): RedirectResponse
     {
         // Validaáljuk a bejelentkezési adatokat
         $validatedData = $request->validate([
@@ -21,35 +21,35 @@ class AdminController extends \Illuminate\Routing\Controller
             'password' => 'required',
         ]);
 
-        // Próbáljuk beléptetni a felhasználót
+        // Próbáljuk beléptetni az admint
         if (Auth::guard('admin')->attempt($validatedData)) {
-            // Ha sikerült, átirányítjuk a felhasználót a megfelelő oldalra
-            return redirect()->intended("adminHome");
+            // Ha sikerült, átirányítjuk az admint a megfelelő oldalra
+            return redirect()->intended("admin/home");
         } else {
             // Ha nem sikerült, visszairányítjuk a felhasználót a bejelentkező oldalra
             return back()->withInput()->withErrors(['email' => 'Hibás e-mail cím vagy jelszó']);
         }
     }
 
-    public function showAdminHomeForm(): Factory|View|Application
+    public function showHome(): Factory|View|Application
     {
-        return view('adminHome');
+        return view('admin.home');
     }
 
-    public function showAdminProfilForm() {
+    public function showProfile() {
         // get the currently authenticated user
         $admin = Auth::guard('admin')->user();
 
 
 
         // display the user's name
-        return view('adminProfil', ['admin' => $admin]);
+        return view('admin.profile', ['admin' => $admin]);
     }
 
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return Redirect::route('home');
+        return Redirect::route('welcome');
     }
 
 }

@@ -17,33 +17,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::post('/register', 'RegistrationController@register')->name('register');
-Route::post('/login', [FelhasznaloController::class, 'login'])->name('login');
-
-Route::get('/login', [FelhasznaloController::class, 'showLoginForm'])->name('login');
-Route::get('/admin-logout', [AdminController::class, 'logout'])->name('admin-logout');
-Route::get('/felhasznalo-logout', [FelhasznaloController::class, 'logout'])->name('felhasznalo-logout');
-
+Route::get('/', function () {return view('welcome');})->name('welcome');//done
+Route::get('/login', function () {return view('login');})->name('login');
+/**
+ * these routes represent the user session's lifecycle
+ */
+Route::post('/login', [FelhasznaloController::class, 'processLogin'])->name('login');//done
+Route::post('/register', [FelhasznaloController::class, 'processRegister'])->name('register');
+Route::get('/user/home', [FelhasznaloController::class, 'showHome'])->middleware('auth')->name('home');
+Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->name('jegyek');
+Route::get('/user/profile', [FelhasznaloController::class, 'showProfile'])->middleware('auth')->name('profile');
+Route::get('/user/change-password', [FelhasznaloController::class, 'showPasswordChanger'])->middleware('auth')->name('change-password');
+Route::post('/user/change-password', [FelhasznaloController::class, 'processPasswordChange'])->middleware('auth')->name('change-password');
+Route::get('/user/logout', [FelhasznaloController::class, 'logout'])->middleware('auth')->name('logout');
+/**
+ * and these for admin session's lifecycle
+ */
+Route::post('/admin/login', [AdminController::class, 'processLogin'])->middleware('auth:admin')->name('admin/login');
+Route::get('/admin/home', [AdminController::class, 'showHome'])->middleware('auth:admin')->name('admin/home');
+Route::get('/admin/changes', [AdminController::class, 'showChanges'])->middleware('auth:admin')->name('admin/changes');
+Route::get('/admin/profile', [AdminController::class, 'showProfile'])->middleware('auth:admin')->name('admin/profile');
+Route::get('/admin/change-password', [AdminController::class, 'showPasswordChanger'])->middleware('auth:admin')->name('admin/change-password');
+Route::post('/admin/change-password', [AdminController::class, 'processPasswordChange'])->middleware('auth:admin')->name('admin/change-password');
+Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('auth:admin')->name('admin/logout');
+/**
+ * ez pedig a menetrend oldal ahol mindenki megfordulhat
+ */
 Route::get('/menetrend', [MenetrendController::class, 'showMenetrendForm'])->name('menetrend');
-
-Route::get('/userHome', [FelhasznaloController::class, 'showUserHomeForm'])->name('userHome');
-Route::get('/adminHome', [AdminController::class, 'showAdminHomeForm'])->name('adminHome');
-
-Route::get('/profil', [FelhasznaloController::class, 'showProfilForm'])->name('profil');
-Route::get('/adminProfil', [AdminController::class, 'showAdminProfilForm'])->name('adminProfil');
-
-Route::get('/change-password', function () {return view('changePassword');})->name('change-password');
-Route::get('/admin/change-password', [AdminController::class, 'showChangePasswordForm'])->name('admin-change-password');
-Route::get('/jegyek', [FelhasznaloController::class, 'showJegyekForm'])->name('jegyek');
-
+/**
+ * ezt az oldalt csak azért csináltuk, mert az admin is megváltoztatja valakinek a jelszavát, például ha a felhasználó személyesen igazolja magát.
+ */
 Route::get('/jelszogenerator/{str}', function ($str) {return view('jelszogenerator',['valamijelszo'=>$str]);});
-
-Route::post('/admin-login', [AdminController::class, 'login'])->name('admin-login');
-
-Route::post('/change-password', [FelhasznaloController::class, 'ChangePassword'])->middleware('auth')->name('changePassword');
 
 
