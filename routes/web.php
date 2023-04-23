@@ -25,7 +25,6 @@ Route::get('/login', function () {return view('login');})->name('login');
 Route::post('/login', [FelhasznaloController::class, 'processLogin'])->name('login');//done
 Route::post('/register', [FelhasznaloController::class, 'processRegister'])->name('register');
 Route::get('/user/home', [FelhasznaloController::class, 'showHome'])->middleware('auth')->name('home');
-Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->name('jegyek');
 Route::get('/user/profile', [FelhasznaloController::class, 'showProfile'])->middleware('auth')->name('profile');
 Route::get('/user/change-password', [FelhasznaloController::class, 'showPasswordChanger'])->middleware('auth')->name('change-password');
 Route::post('/user/change-password', [FelhasznaloController::class, 'processPasswordChange'])->middleware('auth')->name('change-password');
@@ -40,6 +39,14 @@ Route::get('/admin/profile', [AdminController::class, 'showProfile'])->middlewar
 Route::get('/admin/change-password', [AdminController::class, 'showPasswordChanger'])->middleware('auth:admin')->name('admin/change-password');
 Route::post('/admin/change-password', [AdminController::class, 'processPasswordChange'])->middleware('auth:admin')->name('admin/change-password');
 Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('auth:admin')->name('admin/logout');
+/**
+ * these are the user pages for the site functionality
+ */
+Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->name('jegyek');
+/**
+ * and these would be the routes for administration
+ */
+Route::get('/szerkeszto', [MenetrendController::class, 'showMenetrendForm'])->middleware("auth:admin")->name('szerkeszto');
 /**
  * ez pedig a menetrend oldal ahol mindenki megfordulhat
  */
