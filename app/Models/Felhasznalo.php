@@ -15,11 +15,9 @@ class Felhasznalo extends Model implements Authenticatable
     protected $fillable = [
         'nev',
         'email',
-        'szul_datum',
-        'jelszo',
-        'iranyitoszam',
-        'cim',
-        'hazszam'
+        'szuldatum',
+        'jelszohash',
+        'lakcim',
     ];
 
     protected $hidden = [

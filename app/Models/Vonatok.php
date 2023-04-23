@@ -9,11 +9,13 @@ class Vonatok extends Model
 {
     use HasFactory;
 
-    protected $table = 'VONATOK';
+    protected $table = 'VONAT';
 
     protected $fillable = [
-        'allomas',
-        'megnevezes'
+        'leiras',
+        'magnevezes',
+        'infulasideje',
+        'indulashelye',
     ];
 
     protected $hidden = [

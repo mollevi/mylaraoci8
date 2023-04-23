@@ -9,11 +9,13 @@ class TavolsagiBuszok extends Model
 {
     use HasFactory;
 
-    protected $table = 'TAVOLSAGI_BUSZOK';
+    protected $table = 'TAVOLSAGIBUSZ';
 
     protected $fillable = [
-        'allomas',
-        'megnevezes'
+        'leiras',
+        'magnevezes',
+        'infulasideje',
+        'indulashelye',
     ];
 
     protected $hidden = [

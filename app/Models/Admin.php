@@ -15,8 +15,8 @@ class Admin extends Model implements Authenticatable
     protected $fillable = [
         'nev',
         'email',
-        'szul_datum',
-        'jelszo'
+        'szuldatum',
+        'jelszohash'
     ];
 
     protected $hidden = [

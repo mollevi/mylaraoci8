@@ -9,11 +9,13 @@ class HelyiBuszok extends Model
 {
     use HasFactory;
 
-    protected $table = 'HELYI_BUSZOK';
+    protected $table = 'HELYIBUSZ';
 
     protected $fillable = [
-        'allomas',
+        'leiras',
         'magnevezes',
+        'infulasideje',
+        'indulashelye',
     ];
 
     protected $hidden = [
