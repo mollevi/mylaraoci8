@@ -18,9 +18,15 @@
         </div>
 
         <div>
-            <button type="button" onclick="history.back();">Vissza</button>
+            <a href="{{route("admin/profile")}}"><button type="button">Vissza a profilra</button></a>
             <button type="submit">Mentés</button>
         </div>
 
     </form>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
 </div>
