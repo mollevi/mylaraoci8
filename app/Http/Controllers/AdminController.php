@@ -8,6 +8,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends \Illuminate\Routing\Controller
@@ -37,13 +39,32 @@ class AdminController extends \Illuminate\Routing\Controller
     }
 
     public function showProfile() {
-        // get the currently authenticated user
-        $admin = Auth::guard('admin')->user();
+        return view('admin.profile', ['admin' => Auth::guard('admin')->user()]);
+    }
 
+    public function showPasswordChanger():Factory|\Illuminate\Contracts\View\View|Application
+    {
+        return view("admin.password-changer");
+    }
 
+    public function processPasswordChange (Request $request) {
+        $admin = Auth::guard("admin")->user();
 
-        // display the user's name
-        return view('admin.profile', ['admin' => $admin]);
+        $current_password = $request->input('current_password');
+        $new_password = $request->input('new_password');
+        $new_password_confirmation = $request->input('new_password_confirmation');
+
+        if (!Hash::check($current_password, $admin->getAuthPassword())) {
+            return redirect()->back()->with('status', 'The current password is incorrect.');
+        }
+
+        if ($new_password !== $new_password_confirmation) {
+            return redirect()->back()->with('status', 'The new password and its confirmation do not match.');
+        }
+
+        DB::table('admin')->where('id', $admin->getAuthIdentifier())->update(['jelszohash' => Hash::make($new_password)]);
+
+        return redirect()->back()->with('status', 'The password has been changed.');
     }
 
     public function logout()
