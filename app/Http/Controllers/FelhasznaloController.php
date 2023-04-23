@@ -49,17 +49,17 @@ class FelhasznaloController extends Controller
         $new_password = $request->input('new_password');
         $new_password_confirmation = $request->input('new_password_confirmation');
 
-        if (!Hash::check($current_password, $felhasznalok->getAuthPassword())) {
-            return redirect()->back()->with('error', 'The current password is incorrect.');
+        if (!Hash::check($current_password, $felhasznalo->getAuthPassword())) {
+            return redirect()->back()->with('status', 'The current password is incorrect.');
         }
 
         if ($new_password !== $new_password_confirmation) {
-            return redirect()->back()->with('error', 'The new password and its confirmation do not match.');
+            return redirect()->back()->with('status', 'The new password and its confirmation do not match.');
         }
 
-        DB::table('felhasznalo')->where('id', $felhasznalok->getAuthIdentifier())->update(['jelszohash' => Hash::make($new_password)]);
+        DB::table('felhasznalo')->where('id', $felhasznalo->getAuthIdentifier())->update(['jelszohash' => Hash::make($new_password)]);
 
-        return redirect()->back()->with('success', 'The password has been changed.');
+        return redirect()->back()->with('status', 'The password has been changed.');
     }
 
     public function showProfilForm(): \Illuminate\Contracts\View\View|Factory|RedirectResponse|Application
