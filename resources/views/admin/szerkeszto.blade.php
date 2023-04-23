@@ -1,5 +1,5 @@
 <div style="display: inline-block">
-    <form method="POST" action="{{ route('menetrend') }}">
+    <form method="POST" action="{{ route('szerkeszto') }}">
         @csrf
 
         <h1>Menetrend szerkesztés</h1>
