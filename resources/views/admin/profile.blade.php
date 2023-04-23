@@ -24,7 +24,6 @@
             <label for="date">{{$admin->szul_datum}}</label>
         </div>
 
-
-        <button type="button" onclick="history.back();">Vissza</button>
     </form>
+    <a href="{{route("admin/home")}}"><button type="button">Vissza</button></a>
 </div>
