@@ -8,5 +8,5 @@
         <a href="{{ route("adminProfil") }}">Profil</a>
 
     </form>
-    <a href={{route("admin-loguot")}}><button>Kijelentkezés</button></a>
+    <a href={{route("admin-logout")}}><button>Kijelentkezés</button></a>
 </div>
