@@ -22,4 +22,8 @@ class Vonatok extends Model
         'remember_token'
     ];
 
+    public function telepulesek(){
+        return $this->hasMany(Megallo::class);
+    }
+
 }

@@ -17,8 +17,9 @@ class Megallo extends Model
         'vonat_id',
         'helyibusz_id',
         'tavolsagibusz_id',
-        'indulasi_idopont',
-        'erkezesi_idopont'
+        'telepules',
+        'ido',
+        'sorszam'
     ];
 
     protected $hidden = [

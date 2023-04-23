@@ -15,11 +15,15 @@ class TavolsagiBuszok extends Model
         'leiras',
         'megnevezes',
         'indulasi_ido',
-        'indulasi_telepules',
+        'indulasi_telepules'
     ];
 
     protected $hidden = [
         'remember_token'
     ];
+
+    public function telepulesek(){
+        return $this->hasMany(Megallo::class);
+    }
 
 }

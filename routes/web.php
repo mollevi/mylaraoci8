@@ -44,6 +44,7 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('aut
  * ez pedig a menetrend oldal ahol mindenki megfordulhat
  */
 Route::get('/menetrend', [MenetrendController::class, 'showMenetrendForm'])->name('menetrend');
+Route::post('/menetrend-lista', [MenetrendController::class, 'menetrendListazas'])->name('menetrend-listazas');
 /**
  * ezt az oldalt csak azért csináltuk, mert az admin is megváltoztatja valakinek a jelszavát, például ha a felhasználó személyesen igazolja magát.
  */
