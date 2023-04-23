@@ -46,7 +46,7 @@ Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->name('je
 /**
  * and these would be the routes for administration
  */
-Route::get('/szerkeszto', [MenetrendController::class, 'showMenetrendForm'])->middleware("auth:admin")->name('szerkeszto');
+Route::get('/szerkeszto', [MenetrendController::class, 'showSzerkeszto'])->middleware("auth:admin")->name('szerkeszto');
 /**
  * ez pedig a menetrend oldal ahol mindenki megfordulhat
  */
