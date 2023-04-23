@@ -48,11 +48,14 @@ class Felhasznalo extends Model implements Authenticatable
     {
         return 'token';
     }
-    public function getRememberToken(){
+
+    public function getRememberToken()
+    {
         return $this->token;
     }
 
-    public function setRememberToken($value){
+    public function setRememberToken($value)
+    {
 
     }
 
