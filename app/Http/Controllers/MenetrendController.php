@@ -47,7 +47,7 @@ class MenetrendController extends Controller
 
         $results = $query->get();
 
-        return view('menetrend', ['jaratok' => $results]);
+        return view('admin.szerkeszto', ['jaratok' => $results]);
 
     }
 }
