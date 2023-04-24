@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Vonatok;
+use App\Models\Vonat;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VonatokFactory extends Factory
 {
-    protected $model = Vonatok::class;
+    protected $model = Vonat::class;
 
     public function definition(): array
     {

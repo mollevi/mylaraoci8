@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\TavolsagiBuszok;
+use App\Models\TavolsagiBusz;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TavolsagiBuszokFactory extends Factory
 {
-    protected $model = TavolsagiBuszok::class;
+    protected $model = TavolsagiBusz::class;
 
     public function definition(): array
     {

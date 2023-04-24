@@ -21,12 +21,12 @@
                     @endforeach
             @endforeach
         </select>
-    </label>
+    </label><br>
     @if(!empty($megalloArray))
         @foreach($megalloArray as $megallo)
-            <h2>#{{$megallo->sorszam}}</h2>
+            <strong>#{{$megallo->sorszam}}</strong>
             <label>Neve:
-                <input type="text" value="{{$megallo->nev}} " />
+                <input type="text" wire:model.lazy="megalloArray.{{$megallo->sorszam}}" /><br>
             </label>
         @endforeach
     @endif

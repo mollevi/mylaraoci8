@@ -5,22 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HelyiBuszok extends Model
+class TavolsagiBusz extends Model
 {
     use HasFactory;
 
-    protected $table = 'HELYIBUSZ';
+    protected $table = 'TAVOLSAGIBUSZ';
 
     protected $fillable = [
         'leiras',
         'megnevezes',
         'indulasi_ido',
-        'telepules'
+        'indulasi_telepules'
     ];
 
     protected $hidden = [
-        'remember_token',
+        'remember_token'
     ];
+
     public function megallok(){
         return $this->hasMany(Megallo::class);
     }

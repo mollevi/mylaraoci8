@@ -21,7 +21,7 @@ class SzerkesztoComponent extends Component
         $this->megalloArray = $model->find($id)->megallok();
         return;
     }
-        
+
     public function render()
     {
         $query = DB::table('helyibusz')
