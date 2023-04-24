@@ -6,7 +6,7 @@
 
         <h1>Menetrend szerkesztés</h1>
 
-        @livewire("szerkeszto-component", ["jaratok" => $jaratok])
+        @livewire("szerkeszto-component")
 
     </form>
     <button type="button" onclick="history.back();">Vissza</button>
