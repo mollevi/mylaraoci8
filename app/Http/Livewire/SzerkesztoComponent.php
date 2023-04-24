@@ -7,11 +7,21 @@ use Livewire\Component;
 
 class SzerkesztoComponent extends Component
 {
-    public $jarat;
+    public $select;
+
+    public $megalloArray = array();
+
     public function megallokRender()
     {
-        dd($this->jarat);
+        $selectArray = json_decode($this->select, true);
+        $id = $selectArray["id"];
+        $modelName = "App\\Models\\".$selectArray["modelName"];
+        //dd($modelName);
+        $model = new $modelName;
+        $this->megalloArray = $model->find($id)->megallok();
+        return;
     }
+        
     public function render()
     {
         $query = DB::table('helyibusz')
@@ -20,17 +30,17 @@ class SzerkesztoComponent extends Component
 
         $query = DB::table('tavolsagibusz')
             ->select(["id", "megnevezes", "indulasi_ido"]);
-        $tavolsagibusz = $query->get();
+        $tavolsagibuszok = $query->get();
 
         $query = DB::table('vonat')
             ->select(["id", "megnevezes", "indulasi_ido"]);
-        $vonat = $query->get();
+        $vonatok = $query->get();
 
         return view('livewire.szerkeszto-component', [
             "jaratok" => [
-                "helyi" => $helyibuszok,
-                "tavbusz" => $tavolsagibusz,
-                "vonat" => $vonat
+                "HelyiBusz" => $helyibuszok,
+                "TavolsagiBusz" => $tavolsagibuszok,
+                "Vonat" => $vonatok
             ]]);
     }
 }
