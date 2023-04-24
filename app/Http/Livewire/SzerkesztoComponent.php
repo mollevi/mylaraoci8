@@ -2,6 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\HelyiBusz;
+use App\Models\Megallo;
+use App\Models\TavolsagiBusz;
+use App\Models\Vonat;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -9,14 +13,15 @@ class SzerkesztoComponent extends Component
 {
     public $select;
 
-    public $megalloArray = array();
+    public $jaratData;
+
+    public $megalloArray;
 
     public function megallokRender()
     {
         $selectArray = json_decode($this->select, true);
         $id = $selectArray["id"];
         $modelName = "App\\Models\\".$selectArray["modelName"];
-        //dd($modelName);
         $model = new $modelName;
         $this->megalloArray = $model->find($id)->megallok();
         return;
@@ -24,17 +29,11 @@ class SzerkesztoComponent extends Component
 
     public function render()
     {
-        $query = DB::table('helyibusz')
-            ->select(["helyibusz.id", "helyibusz.megnevezes", "helyibusz.indulasi_ido"]);
-        $helyibuszok = $query->get();
+        $helyibuszok = HelyiBusz::all(["id", "megnevezes", "indulasi_ido"]);
 
-        $query = DB::table('tavolsagibusz')
-            ->select(["id", "megnevezes", "indulasi_ido"]);
-        $tavolsagibuszok = $query->get();
+        $tavolsagibuszok = TavolsagiBusz::all(["id", "megnevezes", "indulasi_ido"]);
 
-        $query = DB::table('vonat')
-            ->select(["id", "megnevezes", "indulasi_ido"]);
-        $vonatok = $query->get();
+        $vonatok = Vonat::all(["id", "megnevezes", "indulasi_ido"]);
 
         return view('livewire.szerkeszto-component', [
             "jaratok" => [
