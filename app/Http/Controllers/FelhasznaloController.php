@@ -45,7 +45,7 @@ class FelhasznaloController extends Controller
 
     public function showProfile(): \Illuminate\Contracts\View\View|Factory|RedirectResponse|Application
     {
-        return view('user.profil', ['felhasznalo' => Auth::user()]);
+        return view('user.profile', ['felhasznalo' => Auth::user()]);
     }
 
     public function processPasswordChange (Request $request) {

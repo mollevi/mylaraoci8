@@ -22,8 +22,7 @@ class TavolsagiBuszok extends Model
         'remember_token'
     ];
 
-    public function telepulesek(){
+    public function megallok(){
         return $this->hasMany(Megallo::class);
     }
-
 }

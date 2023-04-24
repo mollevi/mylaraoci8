@@ -36,7 +36,7 @@
             <a href="{{ route("jegyek") }}">Jegyeim</a>
         </div>
 
-        <button type="button" onclick="history.back();">Vissza</button>
+        <a href="{{route("home")}}"><button type="button">Vissza</button></a>
     </form>
 </div>
 @endsection

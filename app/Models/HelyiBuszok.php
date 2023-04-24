@@ -21,5 +21,7 @@ class HelyiBuszok extends Model
     protected $hidden = [
         'remember_token',
     ];
-
+    public function megallok(){
+        return $this->hasMany(Megallo::class);
+    }
 }
