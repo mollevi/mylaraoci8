@@ -8,6 +8,6 @@ class SzerkesztoComponent extends Component
 {
     public function render()
     {
-        return view('livewire.szerkeszto-copmonent');
+        return view('livewire.szerkeszto-component');
     }
 }
