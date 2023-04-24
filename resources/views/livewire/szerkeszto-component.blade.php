@@ -21,7 +21,14 @@
                     @endforeach
             @endforeach
         </select>
-    </label><br>
+    </label>
+    <button wire:click="newHelyiBusz">Új helyi busz</button>
+    <button wire:click="newTavolsagiBusz">Új távolsági busz</button>
+    <button wire:click="newVonat">Új vonat</button>
+    <br>
+        @if(!empty($jaratData))
+            @livewire("jarat-component", ["jarat" => $jaratData], key($jaratData->id))
+        @endif
     <form action="">
         @if(!empty($megalloArray))
             @foreach($megalloArray as $kulcs => $megallo)

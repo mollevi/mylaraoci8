@@ -23,12 +23,22 @@ class SzerkesztoComponent extends Component
         $id = $selectArray["id"];
         $modelName = "App\\Models\\".$selectArray["modelName"];
         $model = new $modelName;
+        $this->jaratData = $model->find($id);
         $this->megalloArray = $model->find($id)->megallok();
         return;
     }
 
-    public function mount(){
-
+    public function newHelyiBusz(){
+        $this->jaratData = new HelyiBusz();
+    }
+    public function newTavolsagiBusz(){
+        $this->jaratData = new TavolsagiBusz;
+    }
+    public function newVonat(){
+        $this->jaratData = new Vonat;
+    }
+    public function newMegallo(){
+        $this->megalloArray->push(new Megallo);
     }
 
     public function render()

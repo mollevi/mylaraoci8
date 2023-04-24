@@ -22,7 +22,10 @@ class TavolsagiBusz extends Model
         'remember_token'
     ];
 
+
+
     public function megallok(){
-        return $this->hasMany(Megallo::class);
+        return $this->hasMany(Megallo::class, "tavolsagibusz_id", "id")
+            ->orderBy("sorszam", "asc")->get();
     }
 }

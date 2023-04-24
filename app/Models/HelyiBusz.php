@@ -23,6 +23,7 @@ class HelyiBusz extends Model
     ];
 
     public function megallok(){
-        return $this->hasMany(Megallo::class, "helyibusz_id", "id")->get();
+        return $this->hasMany(Megallo::class, "helyibusz_id", "id")
+            ->orderBy("sorszam", "asc")->get();
     }
 }

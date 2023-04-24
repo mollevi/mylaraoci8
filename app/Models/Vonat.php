@@ -23,7 +23,8 @@ class Vonat extends Model
     ];
 
     public function megallok(){
-        return $this->hasMany(Megallo::class);
+        return $this->hasMany(Megallo::class, "vonat_id", "id")
+            ->orderBy("sorszam", "asc")->get();
     }
 
 }
