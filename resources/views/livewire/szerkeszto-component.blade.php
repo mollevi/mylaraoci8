@@ -22,12 +22,11 @@
             @endforeach
         </select>
     </label><br>
-    @if(!empty($megalloArray))
-        @foreach($megalloArray as $megallo)
-            <strong>#{{$megallo->sorszam}}</strong>
-            <label>Neve:
-                <input type="text" wire:model.lazy="megalloArray.{{$megallo->sorszam}}" /><br>
-            </label>
-        @endforeach
-    @endif
+    <form action="">
+        @if(!empty($megalloArray))
+            @foreach($megalloArray as $kulcs => $megallo)
+                @livewire("megallo-component", ["megallo" => $megallo, "kulcs" => $kulcs], key($megallo->id) )
+            @endforeach
+        @endif
+    </form>
 </div>

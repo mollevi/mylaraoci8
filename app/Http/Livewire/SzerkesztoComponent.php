@@ -27,6 +27,10 @@ class SzerkesztoComponent extends Component
         return;
     }
 
+    public function mount(){
+
+    }
+
     public function render()
     {
         $helyibuszok = HelyiBusz::all(["id", "megnevezes", "indulasi_ido"]);
