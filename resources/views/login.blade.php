@@ -1,3 +1,5 @@
+@extends("layouts.app")
+@section("body")
 <table border="1">
     <tr>
     <th><h1>Bejelentkezés</h1></th>
@@ -40,3 +42,4 @@
 </table>
 
 <button type="button" onclick="history.back();">Vissza</button>
+@endsection

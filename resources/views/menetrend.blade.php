@@ -1,3 +1,5 @@
+@extends("layouts.app")
+@section("body")
 <div style="display: inline-block">
     <form method="POST" action="{{ route('menetrend-listazas') }}">
         @csrf
@@ -88,3 +90,4 @@
         </tbody>
     </table>
 </div>
+@endsection

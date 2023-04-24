@@ -1,3 +1,5 @@
+@extends("layouts.app")
+@section("body")
 <div style="display: inline-block">
     <form method="POST" action="{{ route('szerkeszto') }}">
         @csrf
@@ -11,4 +13,4 @@
     </form>
     <button type="button" onclick="history.back();">Vissza</button>
 </div>
-
+@endsection
