@@ -17,6 +17,7 @@
     <style>
         body {font-family: 'Nunito', sans-serif; background-color: #d5b24f} a{margin: 1em;}
     </style>
+    <link rel="stylesheet" href="{{asset("css/app.css")}}" >
     @yield("addToHeader")
     @livewireStyles
 </head>

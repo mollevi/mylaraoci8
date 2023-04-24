@@ -1,6 +1,6 @@
 @extends("layouts.app")
 @section("body")
-<table border="1">
+<table>
     <tr>
     <th><h1>Bejelentkezés</h1></th>
     <th><h1>Regisztráció</h1></th>
