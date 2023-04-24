@@ -37,7 +37,7 @@ class MenetrendController extends Controller
         return view('menetrend', ['jaratok' => $results]);
 
     }
-    public function showSzerkeszto(Request $request)
+    public function showSzerkeszto()
     {
         return view('admin.szerkeszto');
     }

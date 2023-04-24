@@ -1,7 +1,12 @@
 @extends("layouts.app")
 @section("body")
-    <h1>Üdvözlünk az Adatbázis alapú rendszerek Menetrend oldalán!</h1>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+        <h1 style="margin-bottom: 90px;">Üdvözlünk az Adatbázis alapú rendszerek Menetrend oldalán!</h1>
 
-    <a href="{{ route("menetrend") }}">Menetrendek</a>
-    <a href="{{ route("login") }}">Regisztráció/Bejelentkezés</a>
+        <div style="margin: 5px; display: inline-block;">
+            <a href="{{ route("menetrend") }}" style="background-color: #4c848f; padding: 10px 20px; text-decoration: none; border-radius: 10px;">Menetrendek</a>
+            <a href="{{ route("login") }}" style="background-color: #4c848f; padding: 10px 20px; text-decoration: none; border-radius: 10px;">Regisztráció/Bejelentkezés</a>
+        </div>
+    </div>
+
 @endsection
