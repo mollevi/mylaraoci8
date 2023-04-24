@@ -8,10 +8,18 @@ class MegalloComponent extends Component
 {
     public $megallo;
     public $kulcs;
+    public $createSave = false;
+
+    public function createSave(){
+        $this->createSave = true;
+    }
+    public function save(){
+        $this->megallo->save();
+    }
 
     protected $rules = [
         'megallo.nev' => 'required|string|max:30',
-        'megallo.km' => 'required|number|min:0',
+        'megallo.kilometer' => 'required|number|min:0',
         'megallo.vonat_id' => 'number',
         'megallo.helyibusz_id' => 'number',
         'megallo.tavolsagibusz_id' => 'number',

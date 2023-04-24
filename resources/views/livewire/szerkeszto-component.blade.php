@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('error'))
+        <div style="display:block;background: orangered;text-align: center;color:white;">
+            {{ session('error') }}
+        </div>
+    @endif
     <label for="select">Válaszd ki, mely járatot szeretnéd szerkeszteni:
         <select name="select" id="select" wire:model.lazy="select" wire:change="megallokRender">
             <option value="{{json_encode(["id"=>null, "tabla"=> null])}}">Nincs kiválasztva</option>
@@ -25,6 +30,11 @@
     <button wire:click="newHelyiBusz">Új helyi busz</button>
     <button wire:click="newTavolsagiBusz">Új távolsági busz</button>
     <button wire:click="newVonat">Új vonat</button>
+    @if (session()->has('message'))
+        <div style="display:inline-block;background: green;color:white;">
+            {{ session('message') }}
+        </div>
+    @endif
     <br>
         @if(!empty($jaratData))
             @livewire("jarat-component", ["jarat" => $jaratData], key($jaratData->id))
@@ -34,6 +44,10 @@
             @foreach($megalloArray as $kulcs => $megallo)
                 @livewire("megallo-component", ["megallo" => $megallo, "kulcs" => $kulcs], key($megallo->id) )
             @endforeach
+            @if(!empty($megalloData))
+                @livewire("megallo-component", ["megallo"=>$megalloData], key($megalloData->id))
+            @endif
+            <button type="button" wire:click="newMegallo">Új megálló</button>
         @endif
     </form>
 </div>
