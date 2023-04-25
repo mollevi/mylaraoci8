@@ -1,5 +1,10 @@
 <?php
 
+$connection = ssh2_connect('shell.example.com', 22);
+ssh2_auth_pubkey_file($connection, 'username', 'id_dsa.pub', 'id_dsa');
+
+$tunnel = ssh2_tunnel($connection, '10.0.0.101', 12345);
+
 return [
     'oracle' => [
         'driver' => 'oracle',
@@ -18,6 +23,7 @@ return [
         'server_version' => env('DB_SERVER_VERSION', '12c'),
         'load_balance' => env('DB_LOAD_BALANCE', 'yes'),
         'max_name_len' => env('ORA_MAX_NAME_LEN', 30),
+        "timastamps" => false,
         'dynamic' => [],
     ],
     'sessionVars' => [
