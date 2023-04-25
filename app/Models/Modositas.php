@@ -11,6 +11,8 @@ class Modositas extends Model
 
     protected $table = 'MODOSITAS';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'admin_id',
         'szoveg',

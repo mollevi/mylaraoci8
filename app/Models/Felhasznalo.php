@@ -12,6 +12,8 @@ class Felhasznalo extends Model implements Authenticatable
 
     protected $table = 'FELHASZNALO';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nev',
         'email',

@@ -11,6 +11,8 @@ class Megallo extends Model
 
     protected $table = 'MEGALLO';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nev',
         'kilometer',

@@ -11,6 +11,8 @@ class HelyiBusz extends Model
 
     protected $table = 'HELYIBUSZ';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'leiras',
         'megnevezes',

@@ -11,6 +11,8 @@ class TavolsagiBusz extends Model
 
     protected $table = 'TAVOLSAGIBUSZ';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'leiras',
         'megnevezes',

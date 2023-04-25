@@ -11,6 +11,8 @@ class Vonat extends Model
 
     protected $table = 'VONAT';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'leiras',
         'megnevezes',

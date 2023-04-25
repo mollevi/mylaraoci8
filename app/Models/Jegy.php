@@ -11,6 +11,8 @@ class Jegy extends Model
 
     protected $table = 'JEGY';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'ar',
         'tipus',

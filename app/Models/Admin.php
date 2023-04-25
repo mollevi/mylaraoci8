@@ -12,6 +12,8 @@ class Admin extends Model implements Authenticatable
 
     protected $table = 'ADMIN';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'nev',
         'email',
