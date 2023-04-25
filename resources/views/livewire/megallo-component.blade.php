@@ -6,6 +6,6 @@
         <input type="text" wire:model="megallo.telepules" wire:change.debounce.500ms="createSave" value="{{$megallo->telepules}}" />
         <input type="text" wire:model="megallo.ido" wire:change.debounce.500ms="createSave" value="{{$megallo->ido}}" />
         <input type="hidden" wire:model="megallo.sorszam" value="{{$megallo->sorszam}}" />
-        @if($createSave)<button wire:click.prevent="save">SAVE!</button>@endif<br>
+        @if($createSave)<button wire:click.prevent="save">Megálló Mentés!</button>@endif<br>
     </label>
 </div>

@@ -44,9 +44,13 @@
             @foreach($megalloArray as $kulcs => $megallo)
                 @livewire("megallo-component", ["megallo" => $megallo, "kulcs" => $kulcs], key($megallo->id) )
             @endforeach
-            @if(!empty($megalloData))
-                @livewire("megallo-component", ["megallo"=>$megalloData], key($megalloData->id))
-            @endif
+        @endif
+
+        @if(!empty($megalloData))
+            @livewire("megallo-component", ["megallo"=>$megalloData], key($megalloData->id))
+        @endif
+
+        @if(!empty($jaratData))
             <button type="button" wire:click="newMegallo">Új megálló</button>
         @endif
     </form>

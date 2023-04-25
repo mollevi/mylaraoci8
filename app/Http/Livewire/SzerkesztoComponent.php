@@ -34,24 +34,30 @@ class SzerkesztoComponent extends Component
     }
 
     public function newHelyiBusz(){
-        $this->jaratData = new HelyiBusz();
+        $this->jaratData = HelyiBusz::make();
         session()->flash('message', 'Új helyi busz formot kaptál!');
+        $this->megalloData = Megallo::make(["sorszam"=>1]);
+        $this->megalloArray = null;
 
     }
     public function newTavolsagiBusz(){
-        $this->jaratData = new TavolsagiBusz;
+        $this->jaratData = TavolsagiBusz::make();
         session()->flash('message', 'Új távolsági busz formot kaptál!');
+        $this->megalloData = Megallo::make(["sorszam"=>1]);
+        $this->megalloArray = null;
 
     }
     public function newVonat(){
-        $this->jaratData = new Vonat;
+        $this->jaratData = Vonat::make();
         session()->flash('message', 'Új vonat formot kaptál!');
+        $this->megalloData = Megallo::make(["sorszam"=>1]);
+        $this->megalloArray = null;
 
     }
     public function newMegallo(){
         try {
             $this->megalloData = Megallo::make(["sorszam"=>($this->megalloArray->last()->sorszam)+1]);
-        }catch(Exception){
+        }catch(Exception $e){
             if(isEmpty($this->megalloArray)){
                 $this->megalloData = Megallo::make(["sorszam"=>1]);
             }else{
@@ -60,7 +66,7 @@ class SzerkesztoComponent extends Component
         }
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $helyibuszok = HelyiBusz::all(["id", "megnevezes", "indulasi_ido"]);
 
