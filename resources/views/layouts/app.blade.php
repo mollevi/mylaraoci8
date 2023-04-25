@@ -22,6 +22,11 @@
     @livewireStyles
 </head>
 <body>
+@if (session()->has('error'))
+    <div style="position: absolute; top:0; right: 0; display:block;background: orangered;text-align: center;color:white;">
+        {{ session('error') }}
+    </div>
+@endif
     @yield("body")
     @livewireScripts
 </body>

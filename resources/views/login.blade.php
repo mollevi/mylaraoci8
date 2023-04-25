@@ -1,10 +1,18 @@
 @extends("layouts.app")
+
+@section("addToHeader")
+    <style>
+        body{
+            align-content: center;
+        }
+    </style>
+@endsection
 @section("body")
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-        <table style="">
+        <table> <!-- MI EZ A MATEK A SYTLES-BAN LOL -->
             <tr style="background-color: #4c848f;">
                 <th><h1>Bejelentkezés</h1></th>
-                <th><h1>Regisztráció</h1></th>
+                <th style="width: 280px;"><h1>Regisztráció</h1></th>
                 <th><h1>Admin Bejelentkezés</h1></th>
             </tr>
             <tr>
@@ -24,24 +32,26 @@
                     </form>
                 </td>
 
-                <td style="padding: 40px; background-color: #afc5c9;">
+                <td style="padding: 40px; width: 125px; align-content: center; background-color: #afc5c9;">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <label for="name" style="display: inline-block; width: 100px; padding: 10px;">Name</label>
-                        <label>
-                            <input type="text" name="name" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
+                        <label for="nev" style="display: inline-block; width: 100px; padding: 10px;">Name
+                            <input type="text" name="nev" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
                         </label><br>
-                        <label for="email" style="display: inline-block; width: 100px; padding: 10px;">Email</label>
-                        <label>
+                        <label for="szuldatum" style="display: inline-block; width: 100px; padding: 10px;">Date of birth
+                            <input type="datetime-local" name="szuldatum" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
+                        </label><br>
+                        <label for="email" style="display: inline-block; width: 100px; padding: 10px;">Email
                             <input type="email" name="email" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
                         </label><br>
-                        <label for="password" style="display: inline-block; width: 100px; padding: 10px;">Password</label>
-                        <label>
-                            <input type="password" name="password" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
+                        <label for="lakcim" style="display: inline-block; width: 100px; padding: 10px;">Address
+                            <input type="text" name="lakcim" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
                         </label><br>
-                        <label for="password_confirmation" style="display: inline-block; width: 100px; padding: 10px;">Confirm Password</label>
-                        <label>
-                            <input type="password" name="password_confirmation" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
+                        <label for="jelszo" style="display: inline-block; width: 100px; padding: 10px;">Password
+                            <input type="password" name="jelszo" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
+                        </label><br>
+                        <label for="jelszo2" style="display: inline-block; width: 100px; padding: 10px;">Confirm Password
+                            <input type="password" name="jelszo2" style="display: inline-block; border-radius: 10px; padding: 5px;" required>
                         </label><br>
                         <button type="submit" style="border-radius: 14%; background-color: #4c848f; padding: 8px; margin-left: 40%; cursor: pointer;">Register</button>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>

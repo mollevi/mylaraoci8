@@ -1,12 +1,12 @@
 @extends("layouts.app")
 @section("body")
 <div style="display: inline-block">
-        @csrf
+    @csrf
 
-        <h1>Menetrend szerkesztés</h1>
+    <h1>Menetrend szerkesztés</h1>
 
-        @livewire("szerkeszto-component")
+    @livewire("szerkeszto-component")
 
-    <button>Vissza</button>
+    <a href="{{route("menetrend-listazas")}}"><button type="button">Vissza</button></a>
 </div>
 @endsection

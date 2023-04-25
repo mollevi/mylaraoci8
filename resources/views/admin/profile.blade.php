@@ -1,3 +1,5 @@
+@extends("layouts.app")
+@section("body")
 <div style="display: inline-block">
     <form method="POST" action="{{ route('admin/profile') }}">
         @csrf
@@ -27,3 +29,4 @@
     </form>
     <a href="{{route("admin/home")}}"><button type="button">Vissza</button></a>
 </div>
+@endsection

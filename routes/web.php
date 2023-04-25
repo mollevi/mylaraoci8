@@ -42,7 +42,7 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('aut
 /**
  * these are the user pages for the site functionality
  */
-Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->name('jegyek');
+Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->middleware('auth')->name('jegyek');
 /**
  * and these would be the routes for administration
  */
