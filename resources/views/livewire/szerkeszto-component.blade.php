@@ -40,6 +40,9 @@
             @livewire("jarat-component", ["jarat" => $jaratData], key($jaratData->id))
         @endif
     <form action="">
+        @if(!empty($jaratData->id))
+            asdasdasd{{$jaratData->id}}}
+        @endif
         @if(!empty($megalloArray))
             @foreach($megalloArray as $kulcs => $megallo)
                 @livewire("megallo-component", ["megallo" => $megallo, "kulcs" => $kulcs], key($megallo->id) )

@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class JaratComponent extends Component
+class JaratComponent extends SzerkesztoComponent
 {
     public $kulcs;
     public $jarat;
@@ -16,17 +16,16 @@ class JaratComponent extends Component
     }
     public function saveIt(){
         $this->jarat->save();
+        dd($this->jarat->id);
     }
 
     protected $rules = [
         'jarat.leiras' => 'required|string|max:30',
         'jarat.megnevezes' => 'required|string|max:30',
         'jarat.indulasi_ido' => 'required|string|max:30',
-        'jarat.telepules' => 'string|max:30',
         'jarat.indulasi_telepules' => 'string|max:30',
     ];
-
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         return view('livewire.jarat-component');
     }

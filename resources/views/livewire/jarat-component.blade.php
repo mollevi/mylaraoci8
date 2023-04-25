@@ -11,7 +11,7 @@
             <input type="datetime-local" wire:model="jarat.indulasi_ido" wire:change.debounce.500ms="createSaveIt" value="{{$jarat->indulasi_ido}}">
         </label>
         <label>Település(indulási):
-            <input type="text" placeholder="null" wire:model="{{ isset($jarat->telepules)?"jarat.telepules":"jarat.indulasi_telepules" }}">
+            <input type="text" placeholder="null" wire:model="jarat.indulasi_telepules" wire:change.debounce.500ms="createSaveIt" value="{{$jarat->indulasi_telepules}}">
         </label>
         @if($createSaveIt)<button>Járat Mentés!</button>@endif<br>
 
