@@ -18,7 +18,7 @@ class CreateAdminTable extends Migration{
             $table->string("nev",127)->nullable(false);
             $table->string("email",255)->nullable(false)->unique();
             $table->date("szuldatum")->nullable(false);
-            $table->string("jelszo",64)->nullable(false);
+            $table->string("jelszohash",64)->nullable(false);
             $table->timestamps();
             $table->rememberToken();
         });
