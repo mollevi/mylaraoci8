@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -60,6 +61,7 @@ class FreshFreshFresh extends Command
         if ($this->needsSeeding()) {
             $this->runSeeder($database);
         }
+        return 0;
     }
 
 
@@ -116,8 +118,12 @@ class FreshFreshFresh extends Command
         echo "DROPPING ALL!";
         $dropstatements = DB::select("select 'drop table '||table_name||' cascade constraints' as executable from user_tables UNION select 'drop sequence '||sequence_name as executable from user_sequences/* UNION select 'drop trigger '||trigger_name||'' as executable from user_triggers*/");
         foreach($dropstatements as $dropstatement){
-                echo "DROPPING:".$dropstatement->executable;
+            echo "DROPPING:".$dropstatement->executable;
+            try{
                 DB::statement( $dropstatement->executable );
+            }catch(QueryException $e){
+                echo $e->getMessage();
+            }
         }
     }
 }

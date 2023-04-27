@@ -81,11 +81,11 @@ class FelhasznaloController extends Controller
             "lakcim"=>$request->input('lakcim'),//todo
         ]);
         if($felhasznalo->save()){
-            Auth::attempt($felhasznalo);
+            Auth::attempt($felhasznalo->toArray());
             return Redirect::route('home');
         }
 
-
+        return redirect()->back()->with('error', 'Valami hiba történt, próbáld újra később!');
     }
     public function logout(): RedirectResponse
     {
