@@ -23,7 +23,7 @@
 
         <div>
             <label for="date">Születési dátum</label>
-            <label for="date">{{$admin->szul_datum}}</label>
+            <label for="date">{{$admin->szuldatum}}</label>
         </div>
 
     </form>

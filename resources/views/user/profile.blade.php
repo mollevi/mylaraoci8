@@ -23,7 +23,7 @@
 
         <div>
             <label for="text">Lakcím</label>
-            <label for="text">{{$felhasznalo->iranyitoszam.' '.$felhasznalo->utca.' '.$felhasznalo->hazszam}}</label>
+            <label for="text">{{$felhasznalo->lakcim}}</label>
         </div>
 
         <div>

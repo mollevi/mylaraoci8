@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class FelhasznaloController extends Controller
 {
@@ -70,18 +71,22 @@ class FelhasznaloController extends Controller
     }
 
     public function processRegister(Request $request){
+
+        $carbonDatetime = Carbon::createFromFormat('Y-m-d\TH:i', $request->input('szuldatum'));
+        $dbDatetime = $carbonDatetime->format('Y-m-d H:i:s');
+
         if($request->input("jelszo") != $request->input("jelszo2")) {
             return redirect()->back()->with('error', 'Nem egyezik a két jelszó');
         }
         $felhasznalo = Felhasznalo::make([
             "nev"=>$request->input('nev'),
             "email"=>$request->input('email'),
-            "szuldatum"=>$request->input('szuldatum'),//todo
+            "szuldatum"=>$dbDatetime,
             "jelszohash"=>Hash::make($request->input('jelszo')),
             "lakcim"=>$request->input('lakcim'),//todo
         ]);
         if($felhasznalo->save()){
-            Auth::attempt($felhasznalo->toArray());
+            Auth::login($felhasznalo);
             return Redirect::route('home');
         }
 
