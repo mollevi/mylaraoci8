@@ -16,7 +16,6 @@ class JaratComponent extends SzerkesztoComponent
     }
     public function saveIt(){
         $this->jarat->save();
-        dd($this->jarat->id);
     }
 
     protected $rules = [
