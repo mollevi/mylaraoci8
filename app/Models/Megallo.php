@@ -12,20 +12,13 @@ class Megallo extends Model
     protected $table = 'MEGALLO';
 
     public $timestamps = false;
-
     protected $fillable = [
+        'telepules',
         'nev',
         'kilometer',
-        'vonat_id',
-        'helyibusz_id',
-        'tavolsagibusz_id',
-        'telepules',
-        'ido',
+        'idopont',
+        'jarat_ido',
         'sorszam'
-    ];
-
-    protected $hidden = [
-        'remember_token',
     ];
 
 }

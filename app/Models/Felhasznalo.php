@@ -12,8 +12,6 @@ class Felhasznalo extends Model implements Authenticatable
 
     protected $table = 'FELHASZNALO';
 
-    public $timestamps = false;
-
     protected $fillable = [
         'nev',
         'email',
@@ -27,9 +25,6 @@ class Felhasznalo extends Model implements Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public function getAuthIdentifierName()
     {

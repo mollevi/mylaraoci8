@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Modositas extends Model
+class Jarat extends Model
 {
     use HasFactory;
 
-    protected $table = 'MODOSITAS';
+    protected $table = 'JARAT';
+
+    public $timestamps = false;
 
     protected $fillable = [
-        'admin_id',
-        'szoveg',
+        'tipus',
+        'megnevezes',
+        'leiras',
+        'datum'
     ];
-
 }

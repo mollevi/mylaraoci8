@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Modositas extends Model
+class Hirdetes extends Model
 {
     use HasFactory;
 
-    protected $table = 'MODOSITAS';
+    protected $table = 'HIRDETES';
 
     protected $fillable = [
-        'admin_id',
-        'szoveg',
+        'cim',
+        'tartalom',
     ];
 
+    protected $hidden = [
+        'remember_token'
+    ];
 }

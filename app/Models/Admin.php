@@ -12,8 +12,6 @@ class Admin extends Model implements Authenticatable
 
     protected $table = 'ADMIN';
 
-    public $timestamps = false;
-
     protected $fillable = [
         'nev',
         'email',
@@ -24,10 +22,6 @@ class Admin extends Model implements Authenticatable
     protected $hidden = [
         'jelszohash',
         'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 
     public function getAuthIdentifierName()
