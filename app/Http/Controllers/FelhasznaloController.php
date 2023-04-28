@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Felhasznalo;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use Carbon\Carbon;
+use Yajra\Pdo\Oci8\Exceptions\Oci8Exception;
 
 class FelhasznaloController extends Controller
 {
@@ -71,31 +75,45 @@ class FelhasznaloController extends Controller
     }
 
     public function processRegister(Request $request){
+        try{
+            $carbonDatetime = Carbon::createFromFormat('Y-m-d\TH:i', $request->input('szuldatum'));
+            $dbDatetime = $carbonDatetime->format('Y-m-d H:i:s');
 
-        $carbonDatetime = Carbon::createFromFormat('Y-m-d\TH:i', $request->input('szuldatum'));
-        $dbDatetime = $carbonDatetime->format('Y-m-d H:i:s');
+            $user = Felhasznalo::where('email', $request->input('email'))->first();
+            if($user){
+                return redirect()->back()->with( 'error', 'Az e-mail címed regisztrálva van, jelentkezz be!' );
+            }
+            if($request->input("jelszo") != $request->input("jelszo2")) {
+                return redirect()->back()->with('error', 'Nem egyezik a két jelszó');
+            }
 
-        if($request->input("jelszo") != $request->input("jelszo2")) {
-            return redirect()->back()->with('error', 'Nem egyezik a két jelszó');
+            DB::beginTransaction();
+            $felhasznalo = Felhasznalo::make([
+                "nev"=>$request->input('nev'),
+                "email"=>$request->input('email'),
+                "szuldatum"=>$dbDatetime,
+                "jelszohash"=>Hash::make($request->input('jelszo')),
+                "lakcim"=>$request->input('lakcim'),
+            ]);
+            if($felhasznalo->save()){
+                Auth::login($felhasznalo);
+                DB::commit();
+                Redirect::route('home');
+            }else{
+                DB::rollBack();
+                return redirect()->back()->with('error', 'Valami hiba történt, próbáld újra később!');
+            }
+        }catch(Oci8Exception $e){
+            DB::rollBack();
         }
-        $felhasznalo = Felhasznalo::make([
-            "nev"=>$request->input('nev'),
-            "email"=>$request->input('email'),
-            "szuldatum"=>$dbDatetime,
-            "jelszohash"=>Hash::make($request->input('jelszo')),
-            "lakcim"=>$request->input('lakcim'),//todo
-        ]);
-        if($felhasznalo->save()){
-            Auth::login($felhasznalo);
-            return Redirect::route('home');
-        }
-
         return redirect()->back()->with('error', 'Valami hiba történt, próbáld újra később!');
     }
-    public function logout(): RedirectResponse
+    public function logout(Request $request)
     {
-        auth()->logout();
-        return Redirect::route('welcome');
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     public function showJegy(): Factory|\Illuminate\Contracts\View\View|Application

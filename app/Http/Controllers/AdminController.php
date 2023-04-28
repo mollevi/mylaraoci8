@@ -67,10 +67,12 @@ class AdminController extends \Illuminate\Routing\Controller
         return redirect()->back()->with('status', 'The password has been changed.');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
-        return Redirect::route('welcome');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
 }
