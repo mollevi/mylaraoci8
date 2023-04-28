@@ -17,7 +17,7 @@ class Megallo extends Model
         'nev',
         'kilometer',
         'idopont',
-        'jarat_ido',
+        'jarat_id',
         'sorszam'
     ];
 
