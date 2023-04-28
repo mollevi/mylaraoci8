@@ -70,5 +70,12 @@ A projekt gyökérkönyvtárában találod az artisan-t, a composer fájlokat
 a fájl-t, majd állítsd be a szükséges paramétereket(a DB blokkot).
 
 Az APP_KEY generálásához használd a `php artisan key:generate` parancsot, majd
-az adatbázis telepítéséhez a `php artisan migrate:fresh` parancsot.
+az adatbázis telepítéséhez a `php artisan migrate` parancsot amennyiben az
+adatbázisodban valami ütközés fordul elő, használhatod a parncsot, amit
+ehhez hoztam létre: `php artisan migrate:afterdestruction`. Ez minden adatot
+töröl az adatbázisodból, garantálva az appunk zavartalan működését 🤣.
 
+Ha teszt adatra is szükséged van az oldal működésének ellenőrzéséhez, használd
+a `php artisan db:seed` parancsot.
+
+Útvonalakat a `php artisan route:list -v` paranncsal célszerű megnézni.
