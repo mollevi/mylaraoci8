@@ -2,10 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\HelyiBusz;
+
+use App\Models\Jarat;
 use App\Models\Megallo;
-use App\Models\TavolsagiBusz;
-use App\Models\Vonat;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -34,21 +33,21 @@ class SzerkesztoComponent extends Component
     }
 
     public function newHelyiBusz(){
-        $this->jaratData = HelyiBusz::make();
+        $this->jaratData = Jarat::make();
         session()->flash('message', 'Új helyi busz formot kaptál!');
         $this->megalloData = Megallo::make(["sorszam"=>1]);
         $this->megalloArray = null;
 
     }
     public function newTavolsagiBusz(){
-        $this->jaratData = TavolsagiBusz::make();
+        $this->jaratData = Jarat::make();
         session()->flash('message', 'Új távolsági busz formot kaptál!');
         $this->megalloData = Megallo::make(["sorszam"=>1]);
         $this->megalloArray = null;
 
     }
     public function newVonat(){
-        $this->jaratData = Vonat::make();
+        $this->jaratData = Jarat::make();
         session()->flash('message', 'Új vonat formot kaptál!');
         $this->megalloData = Megallo::make(["sorszam"=>1]);
         $this->megalloArray = null;
@@ -68,11 +67,11 @@ class SzerkesztoComponent extends Component
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        $helyibuszok = HelyiBusz::all(["id", "megnevezes", "indulasi_ido"]);
+        $helyibuszok = Jarat::all(["id", "megnevezes", "indulasi_ido"]);//TODO
 
-        $tavolsagibuszok = TavolsagiBusz::all(["id", "megnevezes", "indulasi_ido"]);
+        $tavolsagibuszok = Jarat::all(["id", "megnevezes", "indulasi_ido"]); //TODO
 
-        $vonatok = Vonat::all(["id", "megnevezes", "indulasi_ido"]);
+        $vonatok = Jarat::all(["id", "megnevezes", "indulasi_ido"]);//TODO
 
         return view('livewire.szerkeszto-component', [
             "jaratok" => [
