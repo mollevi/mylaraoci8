@@ -21,4 +21,10 @@ class Megallo extends Model
         'sorszam'
     ];
 
+
+
+    public function jarat()
+    {
+        return $this->belongsTo(Jarat::class, 'JARAT_ID');
+    }
 }

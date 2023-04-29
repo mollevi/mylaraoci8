@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         if (Auth::check()) {
-            return redirect("/home");
+            return redirect("/user/home");
         }
         if (Auth::guard("admin")->check()) {
             return redirect("/admin/home");

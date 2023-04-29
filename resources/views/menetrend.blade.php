@@ -31,65 +31,38 @@
             <table style="border-collapse: collapse; margin: 25px 0; font-size: 0.9em; font-family: sans-serif; min-width: 400px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); width: 80%; margin: 30px auto;">
                 <thead style="background-color: #4c848f;">
                 <tr>
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->vonat_indulasi_telepules))
-                        <th>Vonat indulasi település</th>
+                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->tipus))
+                        <th>TÍPUS</th>
                     @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->vonat_indulasi_ido))
-                        <th>Vonat indulási idő</th>
+                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->datum ) )
+                        <th>Indulási idő</th>
                     @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->tavolsagibusz_indulasi_telepules))
-                        <th>Távolsági busz indulási település</th>
+                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->megnevezes))
+                        <th>Név</th>
                     @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->tavolsagibusz_indulasi_ido))
-                        <th>Távolsági busz indulási idő</th>
-                    @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->helyibusz_indulasi_ido))
-                        <th>Helyi busz indulási idő</th>
-                    @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->telepules))
-                        <th>Célállomás</th>
-                    @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->ido))
-                        <th>Érkezési idő</th>
-                    @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->sorszam))
-                        <th>Megálló száma</th>
-                    @endif
-                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->kilometer))
-                        <th>Km a megállóig</th>
+                    @if(isset($jaratok) && count($jaratok) > 0 && isset($jaratok[0]->leiras))
+                        <th>Leírás</th>
                     @endif
                 </tr>
                 </thead>
                 <tbody style="background-color: #afc5c9;">
                 @if(isset($jaratok))
                     @foreach ($jaratok as $jarat)
+                        @php
+                            $kilometer = 0;
+                        @endphp
                         <tr>
-                            @if(isset($jarat->vonat_indulasi_telepules))
-                                <td>{{ $jarat->vonat_indulasi_telepules }}</td>
+                            @if(isset( $jarat->tipus ))
+                                <td>{{ $jarat->tipus }}</td>
                             @endif
-                            @if(isset($jarat->vonat_indulasi_ido))
-                                <td>{{ $jarat->vonat_indulasi_ido }}</td>
+                            @if(isset( $jarat->datum ))
+                                <td>{{ $jarat->datum }}</td>
                             @endif
-                            @if(isset($jarat->tavolsagibusz_indulasi_telepules))
-                                <td>{{ $jarat->tavolsagibusz_indulasi_telepules }}</td>
+                            @if(isset( $jarat->megnevezes ))
+                                <td>{{ $jarat->megnevezes }}</td>
                             @endif
-                            @if(isset($jarat->tavolsagibusz_indulasi_ido))
-                                <td>{{ $jarat->tavolsagibusz_indulasi_ido }}</td>
-                            @endif
-                            @if(isset($jarat->helyibusz_indulasi_ido))
-                                <td>{{ $jarat->helyibusz_indulasi_ido }}</td>
-                            @endif
-                            @if(isset($jarat->telepules))
-                                <td>{{ $jarat->telepules }}</td>
-                            @endif
-                            @if(isset($jarat->ido))
-                                <td>{{ $jarat->ido }}</td>
-                            @endif
-                            @if(isset($jarat->sorszam))
-                                <td>{{ $jarat->sorszam }}</td>
-                            @endif
-                            @if(isset($jarat->kilometer))
-                                <td>{{ $jarat->kilometer }}</td>
+                            @if(isset( $jarat->leiras ))
+                                <td>{{ $jarat->leiras }}</td>
                             @endif
                         </tr>
                     @endforeach

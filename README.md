@@ -19,7 +19,7 @@ lehetőségeit!
 - [Composer](http://www.getcomposer.org), mely a fent említett php-val fut.
 
 
-- A projekt nagyjából 32 MB ramot fog lefoglalni a php számára, a php.ini 
+- A projekt nagyjából 64 MB ramot fog lefoglalni a php számára, a php.ini 
 fájlban általában minden telepítés nagyobbra állítja a határt.
 
 

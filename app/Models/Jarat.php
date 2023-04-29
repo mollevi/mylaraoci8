@@ -19,4 +19,9 @@ class Jarat extends Model
         'leiras',
         'datum'
     ];
+
+    public function megallok()
+    {
+        return $this->hasMany("App\Models\Megallo", "jarat_id","id");
+    }
 }
