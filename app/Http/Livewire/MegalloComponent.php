@@ -8,13 +8,17 @@ class MegalloComponent extends Component
 {
     public $megallo;
     public $kulcs;
-    public $createSave = false;
+    public $createSave;
 
     public function createSave(){
         $this->createSave = true;
     }
     public function save(){
         $this->megallo->save();
+    }
+
+    public function boot(){
+        $this->createSave = false;
     }
 
     protected $rules = [

@@ -7,23 +7,8 @@
     <label for="select">Válaszd ki, mely járatot szeretnéd szerkeszteni:
         <select name="select" id="select" wire:model.lazy="select" wire:change="megallokRender">
             <option value="{{json_encode(["id"=>null, "tabla"=> null])}}">Nincs kiválasztva</option>
-            @foreach($jaratok as $key => $jaratokegyesevel)
-                @php
-                    switch($key){
-                      case "Vonat":
-                        $tipusnev = "Vonat";
-                        break;
-                      case "TavolsagiBusz":
-                        $tipusnev = "Távolsági busz";
-                        break;
-                      case "HelyiBusz":
-                        $tipusnev = "Helyi busz";
-                        break;
-                    }
-                @endphp
-                    @foreach($jaratokegyesevel as $jarat)
-                            <option value="{{json_encode(["id"=>$jarat->id, "modelName"=> $key])}}">{{$tipusnev}}:{{$jarat->megnevezes}}; {{$jarat->indulasi_ido}}</option>
-                    @endforeach
+            @foreach($jaratok as $jarat)
+                    <option value="{{json_encode(["id"=>$jarat->id, "modelName"=> $key])}}">{{$tipusnev}}:{{$jarat->megnevezes}}; {{$jarat->indulasi_ido}}</option>
             @endforeach
         </select>
     </label>
@@ -41,16 +26,21 @@
         @endif
     <form action="">
         @if(!empty($jaratData->id))
-            asdasdasd{{$jaratData->id}}}
+            Járat: #{{$jaratData->id.") ".$jaratData->megnevezes}}}
         @endif
         @if(!empty($megalloArray))
             @foreach($megalloArray as $kulcs => $megallo)
-                @livewire("megallo-component", ["megallo" => $megallo, "kulcs" => $kulcs], key($megallo->id) )
+                @livewire("megallo-component", [
+                        "megallo" => $megallo,
+                        "kulcs" => $kulcs,
+                        empty($jaratdata->id)?:"jarat_id"=>$jaratdata->id
+                    ], key($megallo->id) )
             @endforeach
         @endif
 
         @if(!empty($megalloData))
-            @livewire("megallo-component", ["megallo"=>$megalloData], key($megalloData->id))
+            @livewire("megallo-component", ["megallo"=>$megalloData,
+                        empty($jaratdata->id)?:"jarat_id"=>$jaratdata->id], key($megalloData->id))
         @endif
 
         @if(!empty($jaratData))
