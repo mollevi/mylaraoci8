@@ -22,11 +22,11 @@ class JaratMegalloSeeder extends Seeder
 
         $jaratok->each(function ($jarat) {
             // Create MEGs for each PT
-            for ($i = 1; $i <= rand(9,23); $i++) {
+            for ($i = 0; $i <= rand(9,23); $i++) {
                 $megallo = Megallo::factory()
                     ->make(['sorszam' => $i, 'jarat_id' => $jarat->id]);
 
-                if ($i > 1) {
+                if ($i > 0) {
                     $previous_megallo = Megallo::where('JARAT_ID', $jarat->id)
                         ->where('SORSZAM', $i - 1)->first();
                     if ($previous_megallo) {

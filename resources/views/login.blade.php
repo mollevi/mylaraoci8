@@ -77,7 +77,7 @@
 
             </tr>
         </table>
-        <button type="button" onclick="history.back();" style="margin-top: 40px; border-radius: 14%; background-color: #4c848f; padding: 8px; cursor: pointer;">Vissza</button>
+        <a href="{{route("welcome")}}"><button type="button" style="margin-top: 40px; border-radius: 14%; background-color: #4c848f; padding: 8px; cursor: pointer;">Vissza a főoldalra</button></a>
     </div>
 
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Megallo;
 use Livewire\Component;
 
 class JaratComponent extends SzerkesztoComponent
@@ -16,13 +17,14 @@ class JaratComponent extends SzerkesztoComponent
     }
     public function saveIt(){
         $this->jarat->save();
+
+        $this->megalloData = Megallo::make(["sorszam"=>0,"tipus"=>"Helyi busz"]);
     }
 
     protected $rules = [
         'jarat.leiras' => 'required|string|max:30',
         'jarat.megnevezes' => 'required|string|max:30',
-        'jarat.indulasi_ido' => 'required|string|max:30',
-        'jarat.indulasi_telepules' => 'string|max:30',
+        'jarat.datum' => 'required|string|max:30',
     ];
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {

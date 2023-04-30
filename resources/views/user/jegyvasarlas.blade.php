@@ -1,30 +1,23 @@
 @extends("layouts.app")
 @section("body")
     <div style="text-align: center;">
-        <form method="POST" action="{{ route('menetrend-listazas') }}">
+        <h1 style="font-size: 36px;">Jegyvásárlás</h1>
+        <p>Az egységár: {{$egysegar}} Ft</p>
+        <form method="post" action="{{ route('megveszi') }}">
             @csrf
-
-            <h1 style="font-size: 36px;">Keresés</h1>
-
-            <div style="display: inline-block;">
-                <div style="margin: 5px">
-                    <label for="name" style="display: block;">Honnan?</label>
-                    <input type="text" name="from" required style="height: 25px; border-radius: 10px; padding: 5px;">
-                </div>
-                <div style="margin: 5px">
-                    <label for="name" style="display: block;">Hova?</label>
-                    <input type="text" name="to" required style="height: 25px; border-radius: 10px; padding: 5px;">
-                </div>
-            </div>
-
-            <div>
-                <button style="margin-top: 10px; padding: 8px; border-radius: 14%;
-                    background-color: #4c848f; cursor: pointer;">Keresés</button>
-                <a href="{{ route('home') }}"><button type="button"
-                    style="margin-top: 10px; padding: 8px; border-radius: 14%; background-color: #4c848f; cursor: pointer;">
-                        Vissza a főoldalra
-                </button></a>
-            </div>
+            <input type="hidden" name="milyenfajta" value="{{$tipus}}">
+            <label for="szam" style="display: block;">Add meg a mennyiséget!</label><br>
+            <input type="number" name="mennyiseg" required style="height: 25px; border-radius: 10px; padding: 5px;">
+            @switch($tipus)
+                @case("Helyi busz") darab @break
+                @case("Távolsági busz" || "Vonat")Kilométer @break
+            @endswitch
+            <br>
+            <input type="submit" style="margin-top: 10px; padding: 8px; border-radius: 14%; background-color: #4c848f; cursor: pointer;" value="Jegy megvásárlása"><br>
+            <a href="{{route("menetrend")}}"><button type="button" style="margin-top: 10px; padding: 8px; border-radius: 14%; background-color: #4c848f;
+             cursor: pointer;" >Menetrendekhez</button></a><br>
+            <a href="{{route("jegyek")}}"><button type="button" style="margin-top: 10px; padding: 8px; border-radius: 14%; background-color: #4c848f;
+             cursor: pointer;" >Jegyeimhez</button></a>
         </form>
         @if(Auth::guard("admin")->check())
             <a href="{{route("szerkeszto")}}">
@@ -72,7 +65,7 @@
                                 <td>{{ $jarat->leiras }}</td>
                             @endif
                             @if(isset( $jarat->id ))
-                                    <td><a href="{{ route("jegyvasarlas", ["tipus"=>$jarat->tipus]) }}"><button>Jegyvásárlás</button></a></td>
+                                <td><a href="{{ route("jegyvasarlas", ["tipus"=>$jarat->tipus]) }}"><button>Jegyvásárlás</button></a></td>
                             @endif
                         </tr>
                     @endforeach

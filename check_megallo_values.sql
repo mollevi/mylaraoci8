@@ -10,12 +10,12 @@ DECLARE
     PRAGMA EXCEPTION_INIT(v_warning, -20001);
     PRAGMA EXCEPTION_INIT(v_error, -20002);
 BEGIN
-    IF :NEW.sorszam < 1 THEN
+    IF :NEW.sorszam < 0 THEN
         v_error_message := '{"type":"warning","message":"Helytelen sorszámot kapott ad adatbázis, kérlek, ellenőrizd a megálló sorszámát."}';
         RAISE_APPLICATION_ERROR(-20001, v_error_message);
     END IF;
 
-    IF :NEW.sorszam > 1 THEN
+    IF :NEW.sorszam > 0 THEN
         SELECT ID, TELEPULES, NEV, KILOMETER, IDOPONT, JARAT_ID, SORSZAM INTO v_previous_record FROM megallo WHERE sorszam = (:NEW.sorszam - 1) AND JARAT_ID = :NEW.JARAT_ID ORDER BY megallo.idopont;
         SELECT ID, TELEPULES, NEV, KILOMETER, IDOPONT, JARAT_ID, SORSZAM INTO v_record_alike FROM megallo WHERE sorszam = (:NEW.sorszam) AND JARAT_ID = :NEW.JARAT_ID ORDER BY megallo.idopont;
 

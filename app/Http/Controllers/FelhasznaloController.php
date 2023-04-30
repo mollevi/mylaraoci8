@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Felhasznalo;
+use App\Models\Hirdetes;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -46,7 +47,8 @@ class FelhasznaloController extends Controller
 
     public function showHome(): Factory|\Illuminate\Contracts\View\View|Application
     {
-        return view('user.home');
+        $hirdetesek = Hirdetes::orderBy("UPDATED_AT")->orderBy("UPDATED_AT")->get();
+        return view('user.home', ["hirdetesek"=>$hirdetesek]);
     }
 
     public function showProfile(): \Illuminate\Contracts\View\View|Factory|RedirectResponse|Application
@@ -115,10 +117,4 @@ class FelhasznaloController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
-
-    public function showJegy(): Factory|\Illuminate\Contracts\View\View|Application
-    {
-        return view('user.jegy');
-    }
-
 }

@@ -7,8 +7,8 @@
     <label for="select">Válaszd ki, mely járatot szeretnéd szerkeszteni:
         <select name="select" id="select" wire:model.lazy="select" wire:change="megallokRender">
             <option value="{{json_encode(["id"=>null, "tabla"=> null])}}">Nincs kiválasztva</option>
-            @foreach($jaratok as $jarat)
-                    <option value="{{json_encode(["id"=>$jarat->id, "modelName"=> $key])}}">{{$tipusnev}}:{{$jarat->megnevezes}}; {{$jarat->indulasi_ido}}</option>
+            @foreach($jaratLista as $jaratOption)
+                    <option value="{{ $jaratOption->id }}">{{$jaratOption->tipus}}:{{$jaratOption->megnevezes}}; {{$jaratOption->indulasi_ido}}</option>
             @endforeach
         </select>
     </label>
@@ -26,21 +26,20 @@
         @endif
     <form action="">
         @if(!empty($jaratData->id))
-            Járat: #{{$jaratData->id.") ".$jaratData->megnevezes}}}
+            <br><h1>Járat: #{{$jaratData->id.") ".$jaratData->megnevezes}}}</h1>><br>
         @endif
         @if(!empty($megalloArray))
-            @foreach($megalloArray as $kulcs => $megallo)
+            @foreach($megalloArray as  $megallo)
                 @livewire("megallo-component", [
                         "megallo" => $megallo,
-                        "kulcs" => $kulcs,
-                        empty($jaratdata->id)?:"jarat_id"=>$jaratdata->id
+                        !empty($jaratData->id)?:"jarat_id"=>$jaratData->id
                     ], key($megallo->id) )
             @endforeach
         @endif
 
         @if(!empty($megalloData))
             @livewire("megallo-component", ["megallo"=>$megalloData,
-                        empty($jaratdata->id)?:"jarat_id"=>$jaratdata->id], key($megalloData->id))
+                        !empty($jaratData->id)?:"jarat_id"=>$jaratData->id], key($megalloData->id))
         @endif
 
         @if(!empty($jaratData))

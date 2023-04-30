@@ -8,9 +8,9 @@
 
         <br>
         <div>
-            <label>Vonat: 1500Ft</label><br>
-            <label>Távolsági busz: 500Ft</label><br>
-            <label>Helyi busz: 800FT</label>
+            @foreach($jegyeid as $jegyed)
+
+            @endforeach
 
         </div>
         <br>

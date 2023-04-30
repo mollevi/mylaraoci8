@@ -48,7 +48,11 @@ Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('aut
 /**
  * these are the user pages for the site functionality
  */
-Route::get('/user/jegyek', [FelhasznaloController::class, 'showJegy'])->middleware('auth')->name('jegyek');
+Route::get('/user/jegyek', [JegyController::class, 'showJegy'])->middleware('auth')->name('jegyek');
+Route::get('/jegyvasarlas/{tipus}', [JegyController::class, 'showJegyvasarlas'])
+    ->middleware('auth')->name('jegyvasarlas');
+Route::post('/jegyvasarlas', [JegyController::class, 'processJegyvasarlas'])
+    ->middleware('auth')->name('megveszi');
 /**
  * and these would be the routes for administration
  */

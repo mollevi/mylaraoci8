@@ -17,7 +17,7 @@ class JaratFactory extends Factory
     public function definition():array
     {
         return [
-            'tipus' => $this->faker->randomElement(["vonat","helyibusz","tavolsagibusz"]),
+            'tipus' => $this->faker->randomElement(["Vonat","Helyi busz","Távolsági busz"]),
             'megnevezes' => $this->faker->firstName."-".$this->faker->numberBetween(11,99),
             'leiras' => $this->faker->text,
             'datum' => $this->faker->date(),

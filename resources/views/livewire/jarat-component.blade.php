@@ -1,19 +1,16 @@
 <div>
-    <form wire:submit.prevent="saveIt">
+    <form style="border: 1px solid black; margin: 10px;" wire:submit.prevent="saveIt">
 
-        <label>Leírás:
-            <input type="text" placeholder="null" wire:model="jarat.leiras" wire:change.debounce.500ms="createSaveIt" value="{{$jarat->leiras}}">
+        <label style="border: 1px solid black; margin: 10px;">Megnevezés:
+            <input type="text" placeholder="Megnevezés" wire:model="jarat.megnevezes" wire:keydown.debounce.500ms="createSaveIt" value="{{$jarat->megnevezes}}">
         </label>
-        <label>Megnevezés:
-            <input type="text" placeholder="null" wire:model="jarat.megnevezes" wire:change.debounce.500ms="createSaveIt" value="{{$jarat->megnevezes}}">
+        <label style="border: 1px solid black; margin: 10px;">Leírás:
+            <input type="text" placeholder="Leírás" wire:model="jarat.leiras" wire:keydown.debounce.500ms="createSaveIt" value="{{$jarat->leiras}}">
         </label>
-        <label>Indulási idő:
-            <input type="datetime-local" wire:model="jarat.indulasi_ido" wire:change.debounce.500ms="createSaveIt" value="{{$jarat->indulasi_ido}}">
+        <label style="border: 1px solid black; margin: 10px;">Indulási idő:
+            <input type="datetime-local" wire:model="jarat.datum" wire:keydown.debounce.500ms="createSaveIt" value="{{$jarat->datum}}">
         </label>
-        <label>Település(indulási):
-            <input type="text" placeholder="null" wire:model="jarat.indulasi_telepules" wire:change.debounce.500ms="createSaveIt" value="{{$jarat->indulasi_telepules}}">
-        </label>
-        @if($createSaveIt)<button>Járat Mentés!</button>@endif<br>
+        @if($createSaveIt)<button type="submit" style="border: 1px solid black; margin: 10px;">Járat Mentés!</button>@endif<br>
 
     </form>
 </div>

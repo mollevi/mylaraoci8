@@ -57,7 +57,7 @@ class MenetrendController extends Controller
                     $q->select(['MEGALLO_B.JARAT_ID'])
                         ->from("MEGALLO", "MEGALLO_B")
                         ->where("MEGALLO_B.TELEPULES", "=", $B_telepules)
-                        ->raw("MEGALLO_B.SORSZAM > MEGALLO_A.SORSZAM");
+                        ->whereRaw("MEGALLO_B.SORSZAM > MEGALLO_A.SORSZAM");
                 });})
         ->orderBy("JARAT.DATUM")->with("megallok")->get();
         return view('menetrend', ['jaratok' => $jaratok]);

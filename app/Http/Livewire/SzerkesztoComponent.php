@@ -14,50 +14,54 @@ class SzerkesztoComponent extends Component
 {
     public $select;
 
+    public $jaratLista;
+
     public $jaratData;
 
-    public $megalloArray;
+    public $megalloLista;
+
     public $megalloData;
 
     public function megallokRender()
     {
-        $selectArray = json_decode($this->select, true);
-        $id = $selectArray["id"];
-        $modelName = "App\\Models\\".$selectArray["modelName"];
-        $model = new $modelName;
-        $this->jaratData = $model->find($id);
-        $this->megalloArray = $model->find($id)->megallok();
+        $this->jaratData = Jarat::find($this->select);
+        $this->megalloLista = $this->jaratData->megallok()->get() ;
         $this->megalloData = null;
-
         return;
     }
 
     public function newHelyiBusz(){
         $this->jaratData = Jarat::make();
         session()->flash('message', 'Új helyi busz formot kaptál!');
-        $this->megalloData = Megallo::make(["sorszam"=>1]);
-        $this->megalloArray = null;
+        $this->megalloLista = null;
 
     }
     public function newTavolsagiBusz(){
         $this->jaratData = Jarat::make();
         session()->flash('message', 'Új távolsági busz formot kaptál!');
-        $this->megalloData = Megallo::make(["sorszam"=>1]);
-        $this->megalloArray = null;
-
+        $this->megalloLista = null;
     }
+
     public function newVonat(){
         $this->jaratData = Jarat::make();
         session()->flash('message', 'Új vonat formot kaptál!');
-        $this->megalloData = Megallo::make(["sorszam"=>1]);
-        $this->megalloArray = null;
+        $this->megalloLista = null;
 
     }
     public function newMegallo(){
         try {
-            $this->megalloData = Megallo::make(["sorszam"=>($this->megalloArray->last()->sorszam)+1]);
+            if(is_null($this->megalloLista))
+            {
+                $this->megalloData = Megallo::make(["sorszam"=>(
+                isset($this->megalloLista->last()->sorszam) ?
+                    $this->megalloLista->last()->sorszam + 1 : 0), "jarat_id"=>$this->jaratData->id]);
+            }else{
+                $this->megalloData = Megallo::make([
+                    "sorszam"=>($this->megalloLista->last()->sorszam + 1),
+                    "jarat_id"=>$this->jaratData->id]);
+            }
         }catch(Exception $e){
-            if(isEmpty($this->megalloArray)){
+            if(isEmpty($this->megalloLista)){
                 $this->megalloData = Megallo::make(["sorszam"=>1]);
             }else{
                 session()->flash('error', 'Valami nem jó.');
@@ -67,22 +71,11 @@ class SzerkesztoComponent extends Component
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        $helyibuszok = Jarat::all(["id", "megnevezes", "indulasi_ido"]);//TODO
-
-        $tavolsagibuszok = Jarat::all(["id", "megnevezes", "indulasi_ido"]); //TODO
-
-        $vonatok = Jarat::all(["id", "megnevezes", "indulasi_ido"]);//TODO
-
-        return view('livewire.szerkeszto-component', [
-            "jaratok" => [
-                "HelyiBusz" => $helyibuszok,
-                "TavolsagiBusz" => $tavolsagibuszok,
-                "Vonat" => $vonatok
-            ]]);
+        return view('livewire.szerkeszto-component');
     }
 
-    public function szerkeszt(){
-
+    public function boot(){
+        $this->jaratLista = Jarat::all();
     }
 }
 
